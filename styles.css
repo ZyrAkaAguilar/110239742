@@ -14,7 +14,6 @@ body {
     position: relative;
 }
 
-/* Simulación de la flecha/marca de agua de fondo */
 .background-graphic {
     position: absolute;
     top: 50%;
@@ -41,7 +40,7 @@ h1 {
 }
 
 .highlight {
-    color: #cc1224; /* Rojo característico */
+    color: #cc1224;
 }
 
 h2 {
@@ -49,6 +48,28 @@ h2 {
     font-weight: 300;
     margin: 5px 0 50px 0;
     letter-spacing: -0.5px;
+}
+
+.view-section {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.hidden-smooth {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+    position: absolute;
+    visibility: hidden;
+}
+
+#form-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
 }
 
 .red-btn {
@@ -63,71 +84,114 @@ h2 {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.2s;
+    transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
-.red-btn:hover {
-    background-color: #e61529;
+.red-btn:hover { background-color: #e61529; }
+.red-btn:active { transform: scale(0.98); }
+
+.red-btn.loading {
+    background-color: #5c0810;
+    color: #999;
+    pointer-events: none; 
 }
 
-.red-btn .icon {
-    margin-right: 10px;
-    font-size: 1.2rem;
-}
-
-.btn-small {
-    margin-top: 15px;
-    padding: 10px 20px;
-    font-size: 1rem;
-}
-
-.hidden {
-    display: none !important;
-}
-
-#form-view {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-}
+.red-btn .icon { margin-right: 10px; font-size: 1.2rem; }
+.btn-small { margin-top: 15px; padding: 10px 20px; font-size: 1rem; width: 250px; }
 
 input {
-    width: 250px;
+    width: 224px;
     padding: 12px;
     background-color: #111;
     border: 1px solid #333;
     color: white;
     font-family: 'Montserrat', sans-serif;
     outline: none;
-    transition: border-color 0.2s;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 input:focus {
     border-color: #cc1224;
+    box-shadow: 0 0 8px rgba(204, 18, 36, 0.3);
 }
 
-.error-text {
-    color: #ff3333;
-    font-size: 0.9rem;
-    margin-top: 10px;
+.toast-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.toast {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 4px;
+    width: 320px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+    animation: slideDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, fadeOut 0.3s ease 5s forwards;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-10px); }
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    gap: 15px;
+}
+
+.toast-text {
+    flex: 1;
+    text-align: left;
+}
+
+.toast-text h4 {
+    margin: 0 0 3px 0;
+    font-size: 1rem;
     font-weight: 700;
 }
 
-.language-selector {
-    margin-top: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    font-size: 0.9rem;
+.toast-text p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #aaa;
 }
 
-select {
-    background-color: #000;
-    color: #fff;
-    border: 1px solid #333;
-    padding: 5px 10px;
-    font-family: 'Montserrat', sans-serif;
-    outline: none;
+.toast-icon { font-size: 28px; }
+.toast-error .toast-icon { color: #ff3333; }
+.toast-success .toast-icon { color: #28a745; }
+
+.toast-progress {
+    height: 4px;
+    width: 100%;
+    background-color: #222;
 }
+
+.toast-progress-bar {
+    height: 100%;
+    width: 100%;
+    animation: progressShrink 5s linear forwards;
+}
+
+.toast-error .toast-progress-bar { background-color: #ff3333; }
+.toast-success .toast-progress-bar { background-color: #28a745; }
+
+@keyframes progressShrink {
+    from { width: 100%; }
+    to { width: 0%; }
+}
+
+.language-selector { margin-top: 60px; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 0.9rem; }
+select { background-color: #000; color: #fff; border: 1px solid #333; padding: 5px 10px; font-family: 'Montserrat', sans-serif; outline: none; }
