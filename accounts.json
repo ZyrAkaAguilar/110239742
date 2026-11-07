@@ -6,7 +6,7 @@
     "instances": ["zyrisland","null"]
   },
   {
-    "username": "UsuarioBaneado",
+    "username": "Usuario",
     "password": "123",
     "banned": true,
     "instances": []
