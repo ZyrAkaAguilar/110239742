@@ -9,24 +9,23 @@
 </head>
 <body>
     <div id="toast-container" class="toast-container"></div>
-    
+
     <div class="background-graphic"></div>
     
     <div class="login-container">
         <h1>PLEASE <span class="highlight">LOG-IN</span></h1>
         <h2>WITH YOUR ACCOUNT</h2>
 
-        <div id="initial-view">
+        <div id="initial-view" class="view-section">
             <button id="show-login-btn" class="red-btn">
                 <span class="icon">⊞</span> Iniciar Sesión
             </button>
         </div>
 
-        <div id="form-view" class="hidden">
+        <div id="form-view" class="view-section hidden-smooth">
             <input type="text" id="username-input" placeholder="Nombre de usuario" autocomplete="off">
             <input type="password" id="password-input" placeholder="Contraseña">
             <button id="submit-login-btn" class="red-btn btn-small">Acceder</button>
-            <p id="error-message" class="error-text hidden"></p>
         </div>
 
         <div class="language-selector">
