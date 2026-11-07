@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         window.location.href = 'dashboard.html';
     });
 
-    // --- 2. DETECTAR INSTANCIA ACTUAL ---
     const urlParams = new URLSearchParams(window.location.search);
     const currentInstanceId = urlParams.get('id');
 
@@ -49,9 +48,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const currentInstance = instancesDB[currentInstanceId];
 
-        
-        document.title = `${currentInstance.name}`;
-
+        document.title = `Eufonia Client - ${currentInstance.name}`;
         document.getElementById('bg-layer').style.backgroundImage = `url('${currentInstance.background}')`;
 
         document.getElementById('dp-title').textContent = currentInstance.name;
@@ -82,8 +79,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         const progressUI = document.getElementById('progress-ui');
         
         const statusText = document.getElementById('status-text');
-        const bar1 = document.getElementById('dp-bar-1');
-        const bar2 = document.getElementById('dp-bar-2');
+        const bar1 = document.getElementById('dp-bar-1'); 
+        const bar2 = document.getElementById('dp-bar-2'); 
         const timerText = document.getElementById('dp-timer');
 
         const secuencias = [
@@ -105,6 +102,33 @@ document.addEventListener('DOMContentLoaded', async () => {
             const secs = String(timerSeconds % 60).padStart(2, '0');
             timerText.textContent = `${mins}:${secs}`;
         }
+        function simulateNaturalDownload(duration, callback) {
+            let startTime = Date.now();
+            bar2.style.width = '0%';
+            bar2.style.transition = 'width 0.2s ease-out'; 
+
+            function nextTick() {
+                let elapsed = Date.now() - startTime;
+                
+                if (elapsed >= duration) {
+                    bar2.style.width = '100%';
+                    callback();
+                    return;
+                }
+
+                let realProgress = (elapsed / duration) * 100;
+                
+                let noise = (Math.random() * 20) - 5;
+                let displayProgress = Math.min(96, Math.max(0, realProgress + noise));
+
+                bar2.style.width = `${displayProgress}%`;
+
+                let randomDelay = Math.floor(Math.random() * 350) + 50;
+                setTimeout(nextTick, randomDelay);
+            }
+
+            setTimeout(nextTick, 50);
+        }
 
         playBtn.addEventListener('click', () => {
             playContainer.classList.add('hidden');
@@ -113,7 +137,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             let index = 0;
             timerSeconds = 0;
             timerText.textContent = "00:00";
-            
             timerInterval = setInterval(updateTimer, 1000);
 
             function procesarSiguiente() {
@@ -121,21 +144,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                     statusText.textContent = secuencias[index];
                     
                     const porcentajeGlobal = (index / secuencias.length) * 100;
-                    bar1.style.transition = 'width 0.5s ease';
+                    bar1.style.transition = 'width 0.8s cubic-bezier(0.25, 1, 0.5, 1)';
                     bar1.style.width = `${porcentajeGlobal}%`;
 
-                    const tiempoAleatorio = Math.floor(Math.random() * 8000) + 1000;
+                    const tiempoTotalPaso = Math.floor(Math.random() * 4500) + 1500;
 
-                    bar2.style.transition = 'none';
-                    bar2.style.width = '0%';
-                    
-                    setTimeout(() => {
-                        bar2.style.transition = `width ${tiempoAleatorio}ms linear`;
-                        bar2.style.width = '100%';
-                    }, 50);
+                    simulateNaturalDownload(tiempoTotalPaso, () => {
+                        index++;
+                        setTimeout(procesarSiguiente, 500); 
+                    });
 
-                    index++;
-                    setTimeout(procesarSiguiente, tiempoAleatorio);
                 } else {
                     clearInterval(timerInterval);
                     bar1.style.width = '100%';
