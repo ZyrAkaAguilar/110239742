@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('bg-layer').style.backgroundImage = `url('${currentInstance.background}')`;
 
         document.getElementById('dp-title').textContent = currentInstance.name;
-        document.getElementById('dp-image').src = currentInstance.background;
+        document.getElementById('dp-image').src = currentInstance.icon;
 
         const dockContainer = document.getElementById('dock-icons');
         account.instances.forEach(id => {
