@@ -84,13 +84,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         const timerText = document.getElementById('dp-timer');
 
         const secuencias = [
-            "Solicitando archivos...",
-            "Descargando archivos...",
-            "Descargando ZyrIsland Services...",
-            "Descargando Minecraft Assets...",
-            "Comprimiendo archivos...",
-            "Verificando instalacion...",
-            "Enviando descarga al cliente..."
+            "Requesting files and libraries...",
+            "Downloading archivos...",
+            "Downloading ZyrIsland libraries...",
+            "Downloading Minecraft assets...",
+            "Compressing archivos...",
+            "Verifying files...",
+            "Sending HTTPS..."
         ];
 
         let timerInterval;
