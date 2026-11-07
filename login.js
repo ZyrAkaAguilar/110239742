@@ -63,11 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(async () => {
             try {
-                const response = await fetch('accounts.json');
-                
+                const cacheBuster = new Date().getTime();
+                const response = await fetch(`accounts.json?t=${cacheBuster}`);
+        
                 if (!response.ok) throw new Error("Database error");
 
                 const accounts = await response.json();
+
                 const account = accounts.find(acc => acc.username === username);
 
                 submitLoginBtn.classList.remove('loading');
