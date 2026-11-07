@@ -3,12 +3,14 @@
     "name": "Backrooms",
     "background": "https://i.imgur.com/L1MhR2R.jpeg",
     "icon": "https://i.imgur.com/example-icon1.png",
-    "downloadLink": "download_backrooms.html"
+    "downloadLink": "instance.html?id=backrooms",
+    "fileUrl": "https://tu-servidor.com/archivos/backrooms_assets.zip"
   },
   "survival_smp": {
     "name": "Survival SMP",
     "background": "https://i.imgur.com/xyz123.jpeg",
     "icon": "https://i.imgur.com/example-icon2.png",
-    "downloadLink": "download_survival.html"
+    "downloadLink": "instance.html?id=backrooms",
+    "fileUrl": "https://tu-servidor.com/archivos/backrooms_assets.zip"
   }
 }
