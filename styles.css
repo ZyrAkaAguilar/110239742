@@ -30,25 +30,12 @@ body {
 .login-container {
     text-align: center;
     z-index: 10;
+    position: relative;
 }
 
-h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    margin: 0;
-    letter-spacing: -1px;
-}
-
-.highlight {
-    color: #cc1224;
-}
-
-h2 {
-    font-size: 2.5rem;
-    font-weight: 300;
-    margin: 5px 0 50px 0;
-    letter-spacing: -0.5px;
-}
+h1 { font-size: 3.5rem; font-weight: 800; margin: 0; letter-spacing: -1px; }
+.highlight { color: #cc1224; }
+h2 { font-size: 2.5rem; font-weight: 300; margin: 5px 0 50px 0; letter-spacing: -0.5px; }
 
 .view-section {
     transition: opacity 0.4s ease, transform 0.4s ease;
@@ -93,7 +80,7 @@ h2 {
 .red-btn.loading {
     background-color: #5c0810;
     color: #999;
-    pointer-events: none; 
+    pointer-events: none;
 }
 
 .red-btn .icon { margin-right: 10px; font-size: 1.2rem; }
