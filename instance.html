@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eufonia Client - Lanzador</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="instance-body">
+    
+    <!-- El fondo de pantalla dinámico -->
+    <div id="bg-layer" class="bg-layer"></div>
+
+    <div class="instance-layout">
+        <!-- BARRA LATERAL (DOCK) IZQUIERDA -->
+        <nav class="side-dock">
+            <div class="dock-top">
+                <span id="back-to-dash" class="material-icons menu-btn" title="Volver al menú">menu</span>
+            </div>
+
+            <!-- Aquí aparecerán los cuadritos de los otros eventos -->
+            <div id="dock-icons" class="dock-icons">
+                <!-- Se inyectan con JavaScript -->
+            </div>
+
+            <div class="dock-bottom">
+                <img id="user-avatar-dock" class="dock-avatar" src="" alt="Skin">
+            </div>
+        </nav>
+
+        <!-- ÁREA CENTRAL (BOTÓN PLAY Y PROGRESO) -->
+        <main class="main-stage">
+            <div id="play-container" class="play-btn-container">
+                <button id="play-btn" class="btn-play">PLAY</button>
+            </div>
+
+            <div id="progress-ui" class="progress-ui hidden">
+                <div id="status-text" class="status-text">Iniciando...</div>
+                <div class="progress-bar-container">
+                    <div id="progress-bar-fill" class="progress-bar-fill"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="instance.js"></script>
+</body>
+</html>
