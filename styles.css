@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #070707;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Simulación de la flecha/marca de agua de fondo */
+.background-graphic {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 80vw;
+    border: 40px solid rgba(255, 255, 255, 0.02);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.login-container {
+    text-align: center;
+    z-index: 10;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: -1px;
+}
+
+.highlight {
+    color: #cc1224; /* Rojo característico */
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin: 5px 0 50px 0;
+    letter-spacing: -0.5px;
+}
+
+.red-btn {
+    background-color: #cc1224;
+    color: #000000;
+    border: none;
+    padding: 12px 28px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.red-btn:hover {
+    background-color: #e61529;
+}
+
+.red-btn .icon {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.btn-small {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#form-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+input {
+    width: 250px;
+    padding: 12px;
+    background-color: #111;
+    border: 1px solid #333;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input:focus {
+    border-color: #cc1224;
+}
+
+.error-text {
+    color: #ff3333;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    font-weight: 700;
+}
+
+.language-selector {
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+select {
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #333;
+    padding: 5px 10px;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+}
