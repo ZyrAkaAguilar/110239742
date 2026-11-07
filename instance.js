@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         window.location.href = 'dashboard.html';
     });
 
+    // --- 2. DETECTAR INSTANCIA ACTUAL ---
     const urlParams = new URLSearchParams(window.location.search);
     const currentInstanceId = urlParams.get('id');
 
@@ -48,7 +49,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const currentInstance = instancesDB[currentInstanceId];
 
+        
+        document.title = `${currentInstance.name}`;
+
         document.getElementById('bg-layer').style.backgroundImage = `url('${currentInstance.background}')`;
+
+        document.getElementById('dp-title').textContent = currentInstance.name;
+        document.getElementById('dp-image').src = currentInstance.background;
 
         const dockContainer = document.getElementById('dock-icons');
         account.instances.forEach(id => {
@@ -73,8 +80,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         const playBtn = document.getElementById('play-btn');
         const playContainer = document.getElementById('play-container');
         const progressUI = document.getElementById('progress-ui');
+        
         const statusText = document.getElementById('status-text');
-        const progressBar = document.getElementById('progress-bar-fill');
+        const bar1 = document.getElementById('dp-bar-1');
+        const bar2 = document.getElementById('dp-bar-2');
+        const timerText = document.getElementById('dp-timer');
 
         const secuencias = [
             "Solicitando archivos...",
@@ -86,33 +96,61 @@ document.addEventListener('DOMContentLoaded', async () => {
             "Enviando descarga al cliente..."
         ];
 
+        let timerInterval;
+        let timerSeconds = 0;
+
+        function updateTimer() {
+            timerSeconds++;
+            const mins = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+            const secs = String(timerSeconds % 60).padStart(2, '0');
+            timerText.textContent = `${mins}:${secs}`;
+        }
+
         playBtn.addEventListener('click', () => {
             playContainer.classList.add('hidden');
             progressUI.classList.remove('hidden');
 
             let index = 0;
+            timerSeconds = 0;
+            timerText.textContent = "00:00";
+            
+            timerInterval = setInterval(updateTimer, 1000);
 
             function procesarSiguiente() {
                 if (index < secuencias.length) {
                     statusText.textContent = secuencias[index];
-                    const porcentaje = ((index + 1) / secuencias.length) * 100;
-                    progressBar.style.width = `${porcentaje}%`;
+                    
+                    const porcentajeGlobal = (index / secuencias.length) * 100;
+                    bar1.style.transition = 'width 0.5s ease';
+                    bar1.style.width = `${porcentajeGlobal}%`;
 
                     const tiempoAleatorio = Math.floor(Math.random() * 8000) + 1000;
+
+                    bar2.style.transition = 'none';
+                    bar2.style.width = '0%';
                     
+                    setTimeout(() => {
+                        bar2.style.transition = `width ${tiempoAleatorio}ms linear`;
+                        bar2.style.width = '100%';
+                    }, 50);
+
                     index++;
                     setTimeout(procesarSiguiente, tiempoAleatorio);
                 } else {
-                    statusText.textContent = "¡Listo!";
+                    clearInterval(timerInterval);
+                    bar1.style.width = '100%';
+                    statusText.textContent = "¡Descarga completada!";
+                    
                     setTimeout(() => {
                         window.location.href = currentInstance.fileUrl;
                         
                         setTimeout(() => {
                             progressUI.classList.add('hidden');
                             playContainer.classList.remove('hidden');
-                            progressBar.style.width = '0%';
+                            bar1.style.width = '0%';
+                            bar2.style.width = '0%';
                         }, 2000);
-                    }, 500);
+                    }, 1000);
                 }
             }
 
