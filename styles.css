@@ -182,3 +182,247 @@ input:focus {
 
 .language-selector { margin-top: 60px; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 0.9rem; }
 select { background-color: #000; color: #fff; border: 1px solid #333; padding: 5px 10px; font-family: 'Montserrat', sans-serif; outline: none; }
+
+/* =========================================
+   ESTILOS DEL DASHBOARD
+   ========================================= */
+
+.dashboard-body {
+    background-color: #0c0c0e; 
+    overflow: hidden;
+}
+
+.dashboard-layout {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+.sidebar {
+    width: 260px;
+    background-color: #121216; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-right: 1px solid #1a1a1a;
+}
+
+.sidebar-top {
+    display: flex;
+    flex-direction: column;
+}
+
+.toggle-arrow {
+    align-self: flex-end;
+    margin-right: 20px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.avatar-container {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #cc1224;
+    margin-bottom: 15px;
+    background-color: #000;
+}
+
+.avatar-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    image-rendering: pixelated; 
+}
+
+.user-profile h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 0px;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #dfdfdf;
+    text-decoration: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: background-color 0.2s;
+}
+
+.menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.menu-item .material-icons {
+    font-size: 1.5rem;
+    color: #999;
+}
+
+.sidebar-bottom {
+    padding: 0 20px;
+}
+
+.studio-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.custom-logo {
+    width: 45px;
+    height: auto;
+}
+
+.studio-text {
+    line-height: 1.2;
+}
+
+.brand-name { font-weight: 800; font-size: 1.1rem; }
+.brand-sub { font-weight: 400; font-size: 1rem; }
+
+.footer-links p {
+    font-size: 0.7rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.footer-links a {
+    color: #666;
+    text-decoration: none;
+}
+
+.footer-links a:hover { color: #aaa; }
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #0c0c0e;
+}
+
+.top-red-bar {
+    width: 100%;
+    height: 35px;
+    background-color: #cc1224; 
+}
+
+.main-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px 30px;
+    background-color: #121216;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.instances-label {
+    font-weight: 800;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: #222;
+    border-radius: 4px;
+    padding: 5px 10px;
+    width: 250px;
+}
+
+.search-box .material-icons {
+    color: #888;
+    font-size: 1.2rem;
+    margin-right: 5px;
+}
+
+.search-box input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    width: 100%;
+    padding: 0;
+    font-size: 0.9rem;
+}
+
+.search-box input:focus {
+    box-shadow: none;
+}
+
+.content-area {
+    padding: 50px 60px;
+}
+
+.page-title {
+    font-size: 3rem;
+    margin: 0 0 40px 0;
+    letter-spacing: -1px;
+}
+
+.page-title .text-thin {
+    font-weight: 300;
+    color: #cc1224;
+}
+
+.page-title .text-bold {
+    font-weight: 800;
+    color: #cc1224;
+}
+
+.instances-grid {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.instance-card {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.instance-card:hover {
+    transform: scale(1.02);
+}
+
+.instance-card-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    background-color: #1a1a1a;
+}
+
+.instance-card-title {
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #888999;
+}
