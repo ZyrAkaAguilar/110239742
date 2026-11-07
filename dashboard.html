@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eufonia Client - Instances</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+    <div id="toast-container" class="toast-container"></div>
+
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <span class="material-icons toggle-arrow">arrow_back_ios_new</span>
+                
+                <div class="user-profile">
+                    <div class="avatar-container">
+                        <img id="user-avatar" src="" alt="Skin de Minecraft">
+                    </div>
+                    <h2 id="user-name">Cargando...</h2>
+                </div>
+
+                <nav class="sidebar-menu">
+                    <a href="#" id="help-btn" class="menu-item">
+                        <span class="material-icons">help_outline</span> Help & Feedback
+                    </a>
+                    <a href="#" id="logout-btn" class="menu-item">
+                        <span class="material-icons">logout</span> Log Out
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-bottom">
+                <div class="studio-logo">
+                    <img src="https://via.placeholder.com/50x40/ffffff/000000?text=Logo" alt="Studio Logo" class="custom-logo">
+                    <div class="studio-text">
+                        <span class="brand-name">EUFONIA<sup style="font-size:0.5rem">®</sup></span><br>
+                        <span class="brand-sub">STUDIO</span>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <p><a href="#">Terms of Service</a> • <a href="#">Privacy Policy</a> • <a href="#">Third-Party Licenses</a></p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="top-red-bar"></div>
+            
+            <header class="main-header">
+                <div class="header-right">
+                    <span class="instances-label">INSTANCES</span>
+                    <div class="search-box">
+                        <span class="material-icons">search</span>
+                        <input type="text" placeholder="Search">
+                    </div>
+                </div>
+            </header>
+
+            <section class="content-area">
+                <h1 class="page-title"><span class="text-thin">AVAILABLE</span> <span class="text-bold">INSTANCES</span></h1>
+                
+                <div id="instances-grid" class="instances-grid">
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
