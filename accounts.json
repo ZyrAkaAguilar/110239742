@@ -3,7 +3,7 @@
     "username": "Zyr",
     "password": "password123",
     "banned": false,
-    "instances": ["Survival", "Minigames"]
+    "instances": ["backrooms", "survival_smp"]
   },
   {
     "username": "UsuarioBaneado",
