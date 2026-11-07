@@ -1,2 +1,38 @@
-<h1>ZyrIsland Services.</h1>
-<p>Esta pagina esta fuera de servicio!</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Found</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body style="background-color: #070707; overflow: hidden; margin: 0;">
+    
+    <div class="unauthorized-container" style="position: relative; width: 100vw; height: 100vh;">
+        
+        <div class="background-graphic"></div>
+        
+        <div class="login-container" style="z-index: 10; position: relative;">
+            <h1 style="font-size: 9rem; margin-bottom: 0; line-height: 0.9; color: #ffffff;">404</h1>
+            
+            <h1>PAGE <span class="highlight">NOT FOUND</span></h1>
+            
+            <h2 class="small-subtitle" style="margin-top: 20px; font-size: 1.2rem;">
+                Parece que te has salido de los límites del mapa o te has perdido en las Backrooms. <br> La página que buscas no existe o ha sido movida.
+            </h2>
+            
+            <button id="go-home-btn" class="red-btn" style="margin-top: 30px; padding: 15px 40px; font-size: 1.2rem;">
+                <span class="material-icons icon" style="vertical-align: middle;">home</span> Volver al Inicio
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById('go-home-btn').addEventListener('click', () => {
+            window.location.href = 'index.html'; 
+        });
+    </script>
+</body>
+</html>
