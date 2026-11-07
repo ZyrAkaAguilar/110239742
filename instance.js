@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const currentInstance = instancesDB[currentInstanceId];
 
-        document.title = `Eufonia Client - ${currentInstance.name}`;
+        document.title = `${currentInstance.name}`;
         document.getElementById('bg-layer').style.backgroundImage = `url('${currentInstance.background}')`;
 
         document.getElementById('dp-title').textContent = currentInstance.name;
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 } else {
                     clearInterval(timerInterval);
                     bar1.style.width = '100%';
-                    statusText.textContent = "¡Descarga completada!";
+                    statusText.textContent = "Download completed successfully!";
                     
                     setTimeout(() => {
                         window.location.href = currentInstance.fileUrl;
