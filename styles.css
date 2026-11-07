@@ -538,7 +538,14 @@ select { background-color: #000; color: #fff; border: 1px solid #333; padding: 5
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 12vh; 
+}
+
+.bottom-area {
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
@@ -546,56 +553,84 @@ select { background-color: #000; color: #fff; border: 1px solid #333; padding: 5
     background-color: #cc1224;
     color: white;
     border: none;
-    padding: 15px 80px;
-    font-size: 2.5rem;
+    padding: 15px 140px; 
+    font-size: 2rem;
     font-weight: 800;
     font-family: 'Montserrat', sans-serif;
     cursor: pointer;
-    border-radius: 4px;
-    box-shadow: 0 10px 30px rgba(204, 18, 36, 0.3);
+    border-radius: 2px;
+    box-shadow: 0 10px 30px rgba(204, 18, 36, 0.4);
+    letter-spacing: 2px;
     transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
 }
 
 .btn-play:hover {
     background-color: #e61529;
-    transform: scale(1.05);
+    transform: scale(1.02);
     box-shadow: 0 10px 40px rgba(204, 18, 36, 0.6);
 }
 
-.progress-ui {
+.download-panel {
+    display: flex;
+    background-color: #0a0a0f;
+    width: 750px;
+    height: 280px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+    border: 1px solid #111;
+}
+
+.dp-left {
+    flex: 1;
+    padding: 40px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    width: 70%;
-    max-width: 600px;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 30px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
+    justify-content: center;
 }
 
-.status-text {
-    font-size: 1.2rem;
+#dp-title {
+    font-size: 2.2rem;
     font-weight: 700;
-    color: #dfdfdf;
-    text-align: center;
+    margin: 0 0 25px 0;
+    color: #ffffff;
+    letter-spacing: -0.5px;
 }
 
-.progress-bar-container {
+.dp-bar-container {
     width: 100%;
-    height: 12px;
-    background: #222;
-    border-radius: 6px;
-    overflow: hidden;
+    height: 16px;
+    background-color: #2b2b36;
+    margin-bottom: 25px;
 }
 
-.progress-bar-fill {
+.dp-bar-fill {
     height: 100%;
     width: 0%;
     background-color: #cc1224;
-    transition: width 0.5s ease-out;
+}
+
+.dp-status-text {
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: #e0e0e0;
+    margin-bottom: 25px;
+}
+
+.dp-timer {
+    font-size: 1rem;
+    color: #ffffff;
+    font-family: monospace;
+    margin-top: -10px;
+}
+
+.dp-right {
+    width: 280px;
+    background-color: #000;
+}
+
+.dp-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .hidden {
