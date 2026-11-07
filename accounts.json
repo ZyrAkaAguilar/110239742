@@ -2,7 +2,7 @@
   {
     "username": "Zyr",
     "password": "password123",
-    "banned": false,
+    "banned": true,
     "instances": []
   },
   {
