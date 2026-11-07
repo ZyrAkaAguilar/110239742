@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eufonia Client - Lanzador</title>
+    <title>Instances</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -19,9 +19,7 @@
                 <span id="back-to-dash" class="material-icons menu-btn" title="Volver al menú">menu</span>
             </div>
 
-            <!-- Aquí aparecerán los cuadritos de los otros eventos -->
             <div id="dock-icons" class="dock-icons">
-                <!-- Se inyectan con JavaScript -->
             </div>
 
             <div class="dock-bottom">
@@ -29,17 +27,35 @@
             </div>
         </nav>
 
-        <!-- ÁREA CENTRAL (BOTÓN PLAY Y PROGRESO) -->
         <main class="main-stage">
-            <div id="play-container" class="play-btn-container">
-                <button id="play-btn" class="btn-play">PLAY</button>
-            </div>
-
-            <div id="progress-ui" class="progress-ui hidden">
-                <div id="status-text" class="status-text">Iniciando...</div>
-                <div class="progress-bar-container">
-                    <div id="progress-bar-fill" class="progress-bar-fill"></div>
+            <div class="bottom-area">
+                
+                <div id="play-container" class="play-btn-container">
+                    <button id="play-btn" class="btn-play">DESCARGAR</button>
                 </div>
+
+                <div id="progress-ui" class="download-panel hidden">
+                    <div class="dp-left">
+                        <h2 id="dp-title">Cargando...</h2>
+                        
+                        <div class="dp-bar-container">
+                            <div id="dp-bar-1" class="dp-bar-fill"></div>
+                        </div>
+                        
+                        <div id="status-text" class="dp-status-text">Iniciando...</div>
+                        
+                        <div class="dp-bar-container">
+                            <div id="dp-bar-2" class="dp-bar-fill"></div>
+                        </div>
+                        
+                        <div id="dp-timer" class="dp-timer">00:00</div>
+                    </div>
+                    
+                    <div class="dp-right">
+                        <img id="dp-image" src="" alt="Cover de la instancia">
+                    </div>
+                </div>
+
             </div>
         </main>
     </div>
