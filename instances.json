@@ -1,8 +1,8 @@
 {
-  "backrooms": {
-    "name": "Backrooms",
-    "background": "https://i.imgur.com/L1MhR2R.jpeg",
-    "icon": "https://i.imgur.com/example-icon1.png",
+  "zyrisland": {
+    "name": "ZyrIsland",
+    "background": "https://app.zyrisland.net/assets/backgrounds/zyrisland_background.png",
+    "icon": "https://app.zyrisland.net/assets/icons/zyrisland_icon.jpg",
     "downloadLink": "instance.html?id=backrooms",
     "fileUrl": "https://tu-servidor.com/archivos/backrooms_assets.zip"
   },
@@ -10,7 +10,7 @@
     "name": "Survival SMP",
     "background": "https://i.imgur.com/xyz123.jpeg",
     "icon": "https://i.imgur.com/example-icon2.png",
-    "downloadLink": "instance.html?id=backrooms",
+    "downloadLink": "instance.html?id=survival_smp",
     "fileUrl": "https://tu-servidor.com/archivos/backrooms_assets.zip"
   }
 }
