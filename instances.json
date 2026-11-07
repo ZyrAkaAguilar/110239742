@@ -6,11 +6,11 @@
     "downloadLink": "instance.html?id=zyrisland",
     "fileUrl": "https://tu-servidor.com/archivos/backrooms_assets.zip"
   },
-  "survival_smp": {
+  "null": {
     "name": "Survival SMP",
-    "background": "https://i.imgur.com/xyz123.jpeg",
-    "icon": "https://i.imgur.com/example-icon2.png",
-    "downloadLink": "instance.html?id=survival_smp",
+    "background": "https://app.zyrisland.net/assets/backgrounds/null_background.jpg",
+    "icon": "https://app.zyrisland.net/assets/icons/null_icon.jpg",
+    "downloadLink": "instance.html?id=null",
     "fileUrl": "https://tu-servidor.com/archivos/backrooms_assets.zip"
   }
 }
