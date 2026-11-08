@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         submitLoginBtn.classList.add('loading');
-        submitLoginBtn.textContent = "<span class="material-icons icon">refresh</span> Entrando...";
+        submitLoginBtn.textContent = "Entrando...";
 
         const delay = Math.floor(Math.random() * 3000) + 1000; 
 
