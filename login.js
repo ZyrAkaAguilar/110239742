@@ -32,8 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h4>${title}</h4>
                     <p>${message}</p>
                 </div>
-                <!-- Icono a la derecha -->
-                <span class="material-icons toast-icon">${iconName}</span>
+                <span class="material-icons icon">${iconName}</span>
             </div>
             <div class="toast-progress">
                 <div class="toast-progress-bar"></div>
@@ -57,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         submitLoginBtn.classList.add('loading');
-        submitLoginBtn.textContent = "Entrando...";
+        submitLoginBtn.textContent = "<span class="material-icons icon">refresh</span> Entrando...";
 
         const delay = Math.floor(Math.random() * 3000) + 1000; 
 
@@ -85,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-                showToast('success', '¡Inicio de sesion con exito!', 'Se comprobo su cuenta, entrando...');
+                showToast('verified', '¡Inicio de sesion con exito!', 'Se comprobo su cuenta, entrando...');
                 
                 formView.classList.add('hidden-smooth');
 
