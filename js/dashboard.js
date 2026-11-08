@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const encodedName = getCookie('Nombre');
 
     if (isLoggedIn !== 'si' || !encodedName) {
-        window.location.href = 'index.html';
+        window.location.href = 'https://app.zyrisland.net';
         return; 
     }
 
@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const cacheBuster = new Date().getTime();
             
             const [accountsRes, instancesRes] = await Promise.all([
-                fetch(`accounts.json?t=${cacheBuster}`),
-                fetch(`instances.json?t=${cacheBuster}`)
+                fetch(`../data/accounts.json?t=${cacheBuster}`),
+                fetch(`../data/instances.json?t=${cacheBuster}`)
             ]);
 
             if (!accountsRes.ok || !instancesRes.ok) throw new Error("Archivos no encontrados");
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function executeLogout() {
         document.cookie = "Esta_iniciado_sesion=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         document.cookie = "Nombre=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        window.location.href = 'index.html';
+        window.location.href = 'https://app.zyrisland.net';
     }
 
     document.getElementById('logout-btn').addEventListener('click', (e) => {
