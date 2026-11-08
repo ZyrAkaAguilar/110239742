@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h4>${title}</h4>
                     <p>${message}</p>
                 </div>
-                <span class="material-icons icon">${iconName}</span>
+                <span class="material-icons toast-icon">${iconName}</span>
             </div>
             <div class="toast-progress">
                 <div class="toast-progress-bar"></div>
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-                showToast('verified', '¡Inicio de sesion con exito!', 'Se comprobo su cuenta, entrando...');
+                showToast('success', '¡Inicio de sesion con exito!', 'Se comprobo su cuenta, entrando...');
                 
                 formView.classList.add('hidden-smooth');
 
