@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const encodedName = getCookie('Nombre');
 
     if (isLoggedIn !== 'si' || !encodedName) {
-        window.location.href = 'index.html';
+        window.location.href = 'https://app.zyrisland.net';
         return; 
     }
 
@@ -19,22 +19,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('user-avatar-dock').src = `https://mc-heads.net/avatar/${username}/100`;
 
     document.getElementById('back-to-dash').addEventListener('click', () => {
-        window.location.href = 'dashboard.html';
+        window.location.href = 'https://app.zyrisland.net/dashboard';
     });
 
     const urlParams = new URLSearchParams(window.location.search);
     const currentInstanceId = urlParams.get('id');
 
     if (!currentInstanceId) {
-        window.location.href = 'dashboard.html';
+        window.location.href = 'https://app.zyrisland.net/dashboard';
         return;
     }
 
     try {
         const cacheBuster = new Date().getTime();
         const [accountsRes, instancesRes] = await Promise.all([
-            fetch(`accounts.json?t=${cacheBuster}`),
-            fetch(`instances.json?t=${cacheBuster}`)
+            fetch(`../data/accounts.json?t=${cacheBuster}`),
+            fetch(`../data/instances.json?t=${cacheBuster}`)
         ]);
 
         const accounts = await accountsRes.json();
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const account = accounts.find(acc => acc.username === username);
 
         if (!account || account.banned || !account.instances.includes(currentInstanceId)) {
-            window.location.href = 'dashboard.html';
+            window.location.href = 'https://app.zyrisland.net/dashboard';
             return;
         }
 
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     img.classList.add('active');
                 } else {
                     img.addEventListener('click', () => {
-                        window.location.href = `instance.html?id=${id}`;
+                        window.location.href = `https://app.zyrisland.net/instance?id=${id}`;
                     });
                 }
                 dockContainer.appendChild(img);
@@ -178,6 +178,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
         console.error(error);
         alert("Error cargando la instancia.");
-        window.location.href = 'dashboard.html';
+        window.location.href = 'https://app.zyrisland.net/dashboard';
     }
 });
