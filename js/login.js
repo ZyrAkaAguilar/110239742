@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     if (document.cookie.includes("Esta_iniciado_sesion=si")) {
-        window.location.href = "dashboard.html";
+        window.location.href = "https://app.zyrisland.net/dashboard";
         return;
     }
 
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(async () => {
             try {
                 const cacheBuster = new Date().getTime();
-                const response = await fetch(`accounts.json?t=${cacheBuster}`);
+                const response = await fetch(`../data/accounts.json?t=${cacheBuster}`);
         
                 if (!response.ok) throw new Error("Database error");
 
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.cookie = `Esta_iniciado_sesion=si; ${expires}; path=/`;
                     document.cookie = `Nombre=${encodeURIComponent(account.username)}; ${expires}; path=/`;
                     
-                    window.location.href = "dashboard.html";
+                    window.location.href = "https://app.zyrisland.net/dashboard";
                 }, 5000);
 
             } catch (error) {
