@@ -1,0 +1,16 @@
+{
+  "zyrisland": {
+    "name": "ZyrIsland",
+    "background": "https://app.zyrisland.net/assets/backgrounds/zyrisland_background.png",
+    "icon": "https://app.zyrisland.net/assets/icons/zyrisland_icon.jpg",
+    "downloadLink": "instance.html?id=zyrisland",
+    "fileUrl": "https://tu-servidor.com/archivos/backrooms_assets.zip"
+  },
+  "null": {
+    "name": "Test Instance",
+    "background": "https://app.zyrisland.net/assets/backgrounds/null_background.jpg",
+    "icon": "https://app.zyrisland.net/assets/icons/null_icon.jpg",
+    "downloadLink": "instance.html?id=null",
+    "fileUrl": "https://tu-servidor.com/archivos/backrooms_assets.zip"
+  }
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "username": "ZyrAkaAguilar",
+    "password": "cyn201030",
+    "banned": false,
+    "instances": ["zyrisland"]
+  },
+  {
+    "username": "Usuario",
+    "password": "123",
+    "banned": true,
+    "instances": []
+  }
+]
