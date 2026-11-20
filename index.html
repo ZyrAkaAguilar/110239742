@@ -8,7 +8,7 @@
     <meta name="robots" content="noindex, nofollow">
     <meta name="theme-color" content="#cc1224">
 
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="icon" type="image/png" href="https://zyrisland.net/favicon/favicon-96x96.png" sizes="96x96" />
@@ -18,25 +18,54 @@
     <div class="ambient-canvas"></div>
     <div class="ambient-grid"></div>
 
+    <div id="mobile-blocker" class="mobile-blocker-screen">
+        <div class="mobile-blocker-card">
+            <div class="mobile-blocker-icon">
+                <i class="fas fa-desktop"></i>
+            </div>
+            <div class="mobile-blocker-pill">SOLO COMPUTADORA • PC / MAC</div>
+            <h1>Acceso No Disponible en Móviles</h1>
+            <p>
+                El gestor de instancias y eventos de <strong>ZyrAkaTV™</strong> está diseñado exclusivamente para ordenadores de escritorio o laptops con <strong>Minecraft Java Edition</strong>.
+            </p>
+            <a href="https://zyrisland.net" class="btn-back-main-site">
+                <i class="fas fa-arrow-left"></i> Ir a ZyrIsland.net
+            </a>
+        </div>
+    </div>
+
     <div id="toast-stack" class="toast-stack"></div>
 
     <div id="app-root"></div>
 
-    <div id="install-modal-backdrop" class="modal-backdrop">
-        <div class="install-modal">
-            <h3 id="modal-inst-title">Preparando Instancia...</h3>
-            <p id="modal-inst-desc">Verificando integridad de archivos y credenciales de sesión.</p>
-            <div class="install-bar-bg">
-                <div id="modal-progress-fill" class="install-bar-fill"></div>
-            </div>
-            <div id="modal-step-text" class="install-step-label">Inicializando cliente...</div>
-            <div class="modal-footer-btns">
-                <button type="button" id="modal-close-btn" class="btn-ban-logout" style="padding: 10px 18px;">Cerrar</button>
-            </div>
-        </div>
-    </div>
-
     <script>
+        function isMobilePhone() {
+            const ua = navigator.userAgent || navigator.vendor || window.opera || "";
+            const mobileRegex = /Android.*Mobile|iPhone|iPod|BlackBerry|IEMobile|Opera Mini|Windows Phone|webOS/i;
+            return mobileRegex.test(ua) || window.innerWidth < 768;
+        }
+
+        function enforceDesktopOnly() {
+            const blocker = document.getElementById("mobile-blocker");
+            const appRoot = document.getElementById("app-root");
+            if (isMobilePhone()) {
+                blocker.classList.add("active");
+                appRoot.style.display = "none";
+                return true;
+            } else {
+                blocker.classList.remove("active");
+                appRoot.style.display = "block";
+                return false;
+            }
+        }
+
+        window.addEventListener("resize", () => {
+            if (!enforceDesktopOnly() && !currentUser) {
+                lastRenderHash = "";
+                fetchEcosystemData();
+            }
+        });
+
         const STORAGE_SANDBOX_KEY = "zyrisland_staff_sandbox_accounts";
         let baseAccounts = [];
         let instancesList = [];
@@ -123,6 +152,8 @@
         }
 
         async function fetchEcosystemData() {
+            if (enforceDesktopOnly()) return;
+
             try {
                 const [accRes, instRes] = await Promise.all([
                     fetch(`accounts.json?t=${Date.now()}`, { cache: "no-store" }),
@@ -152,6 +183,9 @@
             renderLoginScreen();
         }
 
+        /* =========================================================
+           VISTA 1: PANTALLA DE INICIO DE SESIÓN (PRODUCCIÓN LIMPIA)
+           ========================================================= */
         function renderLoginScreen() {
             const hash = "LOGIN_VIEW";
             if (lastRenderHash === hash) return;
@@ -174,14 +208,14 @@
                             <div class="form-group">
                                 <label for="login-username">Usuario de Minecraft (IGN)</label>
                                 <div class="input-wrapper">
-                                    <input type="text" id="login-username" placeholder="Ej. ZyrAkaAguilar" required>
+                                    <input type="text" id="login-username" placeholder="Ingresa tu usuario autorizado" required>
                                     <i class="fas fa-user field-icon"></i>
                                 </div>
                             </div>
 
                             <div class="skin-preview-strip">
-                                <img id="login-skin-img" src="${getAvatarUrl("ZyrAkaAguilar", 64)}" alt="Avatar Preview">
-                                <span>Vista previa de identidad: <strong id="login-skin-name">Invitado</strong></span>
+                                <img id="login-skin-img" src="${getAvatarUrl("Steve", 64)}" alt="Avatar Preview">
+                                <span>Identidad detectada: <strong id="login-skin-name">Invitado</strong></span>
                             </div>
 
                             <div class="form-group">
@@ -199,16 +233,6 @@
                                 <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
                             </button>
                         </form>
-
-                        <div class="quick-demo-box">
-                            <div class="quick-demo-title">Accesos Rápidos de Prueba</div>
-                            <div class="demo-pills">
-                                <button type="button" class="demo-pill-btn" data-user="ZyrAkaAguilar" data-pass="zyr2026">👑 Admin / Staff</button>
-                                <button type="button" class="demo-pill-btn" data-user="PlayerTest" data-pass="1234">⚠️ Con Warns (2/3)</button>
-                                <button type="button" class="demo-pill-btn" data-user="UserSancionado" data-pass="1234">🚫 Baneado</button>
-                                <button type="button" class="demo-pill-btn" data-user="InvitadoPendiente" data-pass="1234">🔒 Sin Whitelist</button>
-                            </div>
-                        </div>
                     </section>
                 </main>
             `;
@@ -228,15 +252,6 @@
                 const isPass = passInput.type === "password";
                 passInput.type = isPass ? "text" : "password";
                 this.innerHTML = `<i class="fas ${isPass ? "fa-eye-slash" : "fa-eye"}"></i>`;
-            });
-
-            document.querySelectorAll(".demo-pill-btn").forEach(btn => {
-                btn.addEventListener("click", () => {
-                    userInput.value = btn.dataset.user;
-                    passInput.value = btn.dataset.pass;
-                    userInput.dispatchEvent(new Event("input"));
-                    document.getElementById("login-form").dispatchEvent(new Event("submit"));
-                });
             });
 
             document.getElementById("login-form").addEventListener("submit", (e) => {
@@ -481,7 +496,6 @@
                     </header>
 
                     <main class="dashboard-main">
-                        <!-- Banner de Perfil + Medidor Visual de Warns -->
                         <section class="hero-profile-banner">
                             <div class="hero-profile-left">
                                 <div class="skin-render-box">
@@ -493,7 +507,7 @@
                                         <span>${user.badge || "MIEMBRO AUTORIZADO"}</span>
                                     </div>
                                     <h1>Hola, <span style="color: var(--accent-red);">${user.username}</span></h1>
-                                    <p>Discord vinculado: <strong style="color: #fff;">${user.discord || "No especificado"}</strong> • Sesión protegida en tiempo real.</p>
+                                    <p>Discord vinculado: <strong style="color: #fff;">${user.discord || "No especificado"}</strong> • Haz clic en cualquier instancia para ir a su descarga.</p>
                                 </div>
                             </div>
 
@@ -513,7 +527,6 @@
                             </div>
                         </section>
 
-                        <!-- Contenedor Dinámico de Pestaña -->
                         <div id="tab-content-area"></div>
                     </main>
                 </div>
@@ -550,7 +563,7 @@
 
             container.innerHTML = `
                 <div class="section-header-row">
-                    <h2><i class="fas fa-server"></i> Tus Instancias Autorizadas (${visibleInstances.length})</h2>
+                    <h2><i class="fas fa-server"></i> Instancias Disponibles (${visibleInstances.length})</h2>
                     <div class="sync-indicator">
                         <span class="sync-dot"></span>
                         <span>Sincronización activa cada 4s</span>
@@ -565,105 +578,52 @@
                     </div>
                 ` : `
                     <div class="instances-grid">
-                        ${visibleInstances.map(inst => `
-                            <article class="instance-card">
-                                <div>
-                                    <div class="instance-card-top">
-                                        <span class="instance-tag">${inst.tag || "INSTANCIA"}</span>
-                                        <span class="instance-status ${inst.estado === "online" ? "online" : "maintenance"}">
-                                            <i class="fas fa-circle" style="font-size: 0.55rem;"></i>
-                                            ${inst.estado === "online" ? "Disponible" : "En Pruebas"}
-                                        </span>
+                        ${visibleInstances.map(inst => {
+                            const downloadTarget = inst.url_descarga || `instance.html?id=${encodeURIComponent(inst.id)}`;
+                            return `
+                                <a href="${downloadTarget}" class="instance-tile">
+                                    <div class="instance-media">
+                                        <div class="instance-media-fallback">
+                                            <i class="fas fa-cubes"></i>
+                                            <span>${inst.tag || "ZYRISLAND"}</span>
+                                        </div>
+                                        ${inst.imagen ? `<img src="${inst.imagen}" alt="${inst.nombre}" loading="lazy" onerror="this.style.display='none'">` : ""}
+                                        <div class="instance-media-overlay"></div>
+                                        <div class="instance-badges-overlay">
+                                            <span class="instance-tag">${inst.tag || "EVENTO"}</span>
+                                            <span class="instance-status ${inst.estado === "online" ? "online" : "maintenance"}">
+                                                <i class="fas fa-circle" style="font-size: 0.5rem;"></i>
+                                                ${inst.estado === "online" ? "Disponible" : "En Pruebas"}
+                                            </span>
+                                        </div>
                                     </div>
-                                    <h3>${inst.nombre}</h3>
-                                    <p>${inst.descripcion}</p>
-                                    <div class="instance-meta-row">
-                                        <span class="meta-chip"><i class="fas fa-code-branch"></i> ${inst.version}</span>
-                                        <span class="meta-chip"><i class="fas fa-cubes"></i> ${inst.mods_count} mods</span>
-                                        <span class="meta-chip"><i class="fas fa-memory"></i> ${inst.ram_recomendada}</span>
-                                    </div>
-                                </div>
 
-                                <div class="instance-actions">
-                                    <button type="button" class="btn-install-instance" data-inst-id="${inst.id}">
-                                        <i class="fas fa-download"></i> Preparar Pack
-                                    </button>
-                                    <button type="button" class="btn-copy-srv-ip" data-ip="${inst.ip}" title="Copiar IP: ${inst.ip}">
-                                        <i class="fas fa-copy"></i>
-                                    </button>
-                                </div>
-                            </article>
-                        `).join("")}
+                                    <div class="instance-tile-body">
+                                        <div>
+                                            <h3>${inst.nombre}</h3>
+                                            <p>${inst.descripcion}</p>
+                                        </div>
+
+                                        <div class="instance-tile-footer">
+                                            <div class="instance-specs-mini">
+                                                <span class="meta-chip"><i class="fas fa-code-branch"></i> ${inst.version}</span>
+                                                <span class="meta-chip"><i class="fas fa-cubes"></i> ${inst.mods_count} mods</span>
+                                            </div>
+                                            <span class="tile-go-arrow">
+                                                Descargar <i class="fas fa-arrow-right"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            `;
+                        }).join("")}
                     </div>
                 `}
             `;
-
-            container.querySelectorAll(".btn-copy-srv-ip").forEach(btn => {
-                btn.addEventListener("click", async () => {
-                    try {
-                        await navigator.clipboard.writeText(btn.dataset.ip);
-                        showToast("IP Copiada", `Dirección ${btn.dataset.ip} lista para pegar en Minecraft.`, "success");
-                    } catch (_) {}
-                });
-            });
-
-            container.querySelectorAll(".btn-install-instance").forEach(btn => {
-                btn.addEventListener("click", () => {
-                    const inst = instancesList.find(i => i.id === btn.dataset.instId);
-                    if (inst) launchInstanceInstaller(inst);
-                });
-            });
         }
 
-        function launchInstanceInstaller(inst) {
-            const backdrop = document.getElementById("install-modal-backdrop");
-            const title = document.getElementById("modal-inst-title");
-            const desc = document.getElementById("modal-inst-desc");
-            const fill = document.getElementById("modal-progress-fill");
-            const stepText = document.getElementById("modal-step-text");
-
-            title.textContent = inst.nombre;
-            desc.textContent = `Paquete: ${inst.archivo_zip} (${inst.version})`;
-            fill.style.width = "0%";
-            backdrop.classList.add("open");
-
-            const steps = [
-                { pct: 25, text: `[1/4] Verificando whitelist para ${currentUser.username}...` },
-                { pct: 55, text: `[2/4] Validando firmas SHA-256 de ${inst.mods_count} módulos...` },
-                { pct: 85, text: `[3/4] Empaquetando recursos zyrisland: y configuraciones...` },
-                { pct: 100, text: `[4/4] ¡Listo! Redirigiendo al paquete oficial...` }
-            ];
-
-            let idx = 0;
-            stepText.textContent = steps[0].text;
-            fill.style.width = `${steps[0].pct}%`;
-
-            const timer = setInterval(() => {
-                idx++;
-                if (idx < steps.length) {
-                    fill.style.width = `${steps[idx].pct}%`;
-                    stepText.textContent = steps[idx].text;
-                } else {
-                    clearInterval(timer);
-                    showToast("Paquete Verificado", `${inst.archivo_zip} preparado correctamente.`, "success");
-                    if (inst.url_descarga) {
-                        window.open(inst.url_descarga, "_blank", "noopener");
-                    }
-                }
-            }, 650);
-
-            document.getElementById("modal-close-btn").onclick = () => {
-                clearInterval(timer);
-                backdrop.classList.remove("open");
-            };
-        }
-
-        /* =========================================================
-           TAB B: HISTORIAL DE ADVERTENCIAS (WARNS)
-           ========================================================= */
         function renderWarningsTab(container, user) {
             const warns = Array.isArray(user.warns) ? user.warns : [];
-            const maxWarns = user.max_warns || 3;
 
             container.innerHTML = `
                 <div class="section-header-row">
@@ -703,6 +663,9 @@
             `;
         }
 
+        /* =========================================================
+           TAB C: PANEL STAFF (GESTIÓN DE WARNS, TEMP-BAN Y PERM-BAN)
+           ========================================================= */
         function renderStaffModerationTab(container, adminUser) {
             const allUsers = getMergedAccounts();
 
@@ -762,10 +725,10 @@
                     <div class="staff-box" style="border-top-color: #3b82f6;">
                         <h3><i class="fas fa-code"></i> Exportar accounts.json Actualizado</h3>
                         <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0 0 12px 0;">
-                            Los cambios aplicados arriba se prueban al instante en tu navegador. Copia este JSON y pégalo en tu repositorio de GitHub para hacerlo global:
+                            Copia este JSON y pégalo en tu repositorio de GitHub para aplicar los cambios globalmente:
                         </p>
                         <div class="json-export-area" id="json-export-box"></div>
-                        <button type="button" id="copy-json-btn" class="btn-install-instance" style="width: 100%;">
+                        <button type="button" id="copy-json-btn" class="btn-copy-json">
                             <i class="fas fa-copy"></i> Copiar JSON Completo para GitHub
                         </button>
                     </div>
@@ -870,7 +833,7 @@
             document.getElementById("reset-sandbox-btn").addEventListener("click", () => {
                 resetSandboxOverrides();
                 lastRenderHash = "";
-                showToast("JSON Restaurado", "Se restablecieron los valores originales del archivo accounts.json.", "success");
+                showToast("JSON Restaurado", "Se restablecieron los valores originales de accounts.json.", "success");
                 fetchEcosystemData();
             });
 
@@ -882,7 +845,9 @@
             });
         }
 
-        fetchEcosystemData();
+        if (!enforceDesktopOnly()) {
+            fetchEcosystemData();
+        }
         setInterval(fetchEcosystemData, 4000);
     </script>
 </body>
