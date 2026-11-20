@@ -8,7 +8,7 @@
     <meta name="robots" content="noindex, nofollow">
     <meta name="theme-color" content="#cc1224">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="icon" type="image/png" href="https://zyrisland.net/favicon/favicon-96x96.png" sizes="96x96" />
@@ -18,13 +18,10 @@
     <div class="ambient-canvas"></div>
     <div class="ambient-grid"></div>
 
-    <!-- Contenedor de Notificaciones Toast -->
     <div id="toast-stack" class="toast-stack"></div>
 
-    <!-- Raíz Dinámica de la Aplicación -->
     <div id="app-root"></div>
 
-    <!-- Modal de Instalación / Descarga de Instancia -->
     <div id="install-modal-backdrop" class="modal-backdrop">
         <div class="install-modal">
             <h3 id="modal-inst-title">Preparando Instancia...</h3>
@@ -40,14 +37,11 @@
     </div>
 
     <script>
-        /* =========================================================
-           ESTADO GLOBAL Y UTILIDADES DE COOKIES / STORAGE
-           ========================================================= */
         const STORAGE_SANDBOX_KEY = "zyrisland_staff_sandbox_accounts";
         let baseAccounts = [];
         let instancesList = [];
         let currentUser = null;
-        let activeTab = "instancias"; // "instancias" | "historial" | "staff"
+        let activeTab = "instancias";
         let countdownInterval = null;
         let lastRenderHash = "";
 
@@ -104,9 +98,6 @@
             return `https://mc-heads.net/body/${clean}/right`;
         }
 
-        /* =========================================================
-           CARGA Y SINCRONIZACIÓN DE JSON + SANDBOX STAFF
-           ========================================================= */
         function getMergedAccounts() {
             const sandboxRaw = localStorage.getItem(STORAGE_SANDBOX_KEY);
             if (!sandboxRaw) return baseAccounts;
@@ -161,9 +152,6 @@
             renderLoginScreen();
         }
 
-        /* =========================================================
-           VISTA 1: PANTALLA DE INICIO DE SESIÓN
-           ========================================================= */
         function renderLoginScreen() {
             const hash = "LOGIN_VIEW";
             if (lastRenderHash === hash) return;
@@ -286,31 +274,22 @@
             renderLoginScreen();
         }
 
-        /* =========================================================
-           ENRUTADOR DE EXPERIENCIA AUTENTICADA (BAN / NO-AUTH / APP)
-           ========================================================= */
         function renderAuthenticatedExperience() {
             if (!currentUser) return renderLoginScreen();
 
-            // 1. Verificar si la cuenta tiene un baneo activo
             if (currentUser.baneo && currentUser.baneo.activo === true) {
                 renderBanScreen(currentUser);
                 return;
             }
 
-            // 2. Verificar si el usuario tiene autorización en whitelist
             if (currentUser.autorizado !== true) {
                 renderUnauthorizedScreen(currentUser);
                 return;
             }
 
-            // 3. Renderizar Dashboard Principal
             renderMainDashboard(currentUser);
         }
 
-        /* =========================================================
-           VISTA 2: PANTALLA DE BLOQUEO POR BANEO (TEMP-BAN / PERM-BAN)
-           ========================================================= */
         function renderBanScreen(user) {
             const hash = `BAN_${JSON.stringify(user.baneo)}`;
             if (lastRenderHash === hash) return;
@@ -406,9 +385,6 @@
             }
         }
 
-        /* =========================================================
-           VISTA 3: PANTALLA NO AUTORIZADO (SIN WHITELIST)
-           ========================================================= */
         function renderUnauthorizedScreen(user) {
             const hash = `NOAUTH_${user.username}`;
             if (lastRenderHash === hash) return;
@@ -444,9 +420,6 @@
             document.getElementById("noauth-logout-btn").addEventListener("click", handleLogout);
         }
 
-        /* =========================================================
-           VISTA 4: DASHBOARD PRINCIPAL CON TABS Y GESTIÓN DISCIPLINARIA
-           ========================================================= */
         function renderMainDashboard(user) {
             const activeWarns = (user.warns || []).filter(w => w.activa !== false);
             const maxWarns = user.max_warns || 3;
@@ -571,9 +544,6 @@
             }
         }
 
-        /* =========================================================
-           TAB A: INSTANCIAS Y MODPACKS AUTORIZADOS
-           ========================================================= */
         function renderInstancesTab(container, user) {
             const allowedIds = Array.isArray(user.instancias_permitidas) ? user.instancias_permitidas : [];
             const visibleInstances = instancesList.filter(inst => allowedIds.includes(inst.id));
@@ -733,9 +703,6 @@
             `;
         }
 
-        /* =========================================================
-           TAB C: PANEL STAFF (GESTIÓN DE WARNS, TEMP-BAN Y PERM-BAN)
-           ========================================================= */
         function renderStaffModerationTab(container, adminUser) {
             const allUsers = getMergedAccounts();
 
@@ -831,7 +798,6 @@
                         activa: true
                     });
 
-                    // Auto-escalado si alcanza max_warns
                     const maxW = target.max_warns || 3;
                     if (target.warns.length >= maxW) {
                         target.baneo = {
@@ -916,7 +882,6 @@
             });
         }
 
-        // Inicialización y sondeo cada 4 segundos
         fetchEcosystemData();
         setInterval(fetchEcosystemData, 4000);
     </script>
