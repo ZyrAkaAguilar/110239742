@@ -1,14 +1,112 @@
 [
   {
     "username": "ZyrAkaAguilar",
-    "password": "cyn201030",
-    "banned": false,
-    "instances": ["zyrisland"]
+    "password": "zyr2026",
+    "role": "admin",
+    "badge": "Fundadora • ZyrAkaTV™",
+    "discord": "zyrakatv",
+    "autorizado": true,
+    "max_warns": 3,
+    "baneo": {
+      "activo": false,
+      "tipo": null,
+      "id_caso": null,
+      "razon": "",
+      "staff": "",
+      "fecha": "",
+      "expira": null,
+      "apelable": false
+    },
+    "warns": [],
+    "instancias_permitidas": ["smp-island", "eufonia-events", "betatest-v04"]
   },
   {
-    "username": "Usuario",
-    "password": "123",
-    "banned": true,
-    "instances": []
+    "username": "PlayerTest",
+    "password": "1234",
+    "role": "player",
+    "badge": "Miembro Verificado",
+    "discord": "playertest#0421",
+    "autorizado": true,
+    "max_warns": 3,
+    "baneo": {
+      "activo": false,
+      "tipo": null,
+      "id_caso": null,
+      "razon": "",
+      "staff": "",
+      "fecha": "",
+      "expira": null,
+      "apelable": false
+    },
+    "warns": [
+      {
+        "id": "WRN-2026-014",
+        "razon": "Uso de reloj de redstone sin interruptor de apagado en granja automática (Art. 6.3.2).",
+        "severidad": "media",
+        "fecha": "2026-11-15 18:40",
+        "staff": "ZyrAkaAguilar",
+        "activa": true
+      },
+      {
+        "id": "WRN-2026-019",
+        "razon": "Spam reiterado en el chat general durante la ceremonia de apertura (Art. 4.2.1).",
+        "severidad": "leve",
+        "fecha": "2026-11-18 20:12",
+        "staff": "ZyrAkaAguilar",
+        "activa": true
+      }
+    ],
+    "instancias_permitidas": ["smp-island", "betatest-v04"]
+  },
+  {
+    "username": "UserSancionado",
+    "password": "1234",
+    "role": "player",
+    "badge": "Cuenta Suspendida",
+    "discord": "user_ban#9910",
+    "autorizado": true,
+    "max_warns": 3,
+    "baneo": {
+      "activo": true,
+      "tipo": "tempban",
+      "id_caso": "BAN-2026-088",
+      "razon": "Incumplimiento del Art. 5.2.3 (Stream Sniping) y acumulación de 3 advertencias activas.",
+      "staff": "ZyrAkaAguilar",
+      "fecha": "2026-11-19 21:00",
+      "expira": "2026-11-28T23:59:59Z",
+      "apelable": true
+    },
+    "warns": [
+      {
+        "id": "WRN-2026-021",
+        "razon": "Alteración de bloques en perímetro ajeno sin autorización (Art. 6.1.2).",
+        "severidad": "grave",
+        "fecha": "2026-11-19 20:55",
+        "staff": "ZyrAkaAguilar",
+        "activa": true
+      }
+    ],
+    "instancias_permitidas": []
+  },
+  {
+    "username": "InvitadoPendiente",
+    "password": "1234",
+    "role": "player",
+    "badge": "Sin Whitelist",
+    "discord": "nuevo_user#1102",
+    "autorizado": false,
+    "max_warns": 3,
+    "baneo": {
+      "activo": false,
+      "tipo": null,
+      "id_caso": null,
+      "razon": "",
+      "staff": "",
+      "fecha": "",
+      "expira": null,
+      "apelable": false
+    },
+    "warns": [],
+    "instancias_permitidas": []
   }
 ]
