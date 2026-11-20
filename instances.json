@@ -3,39 +3,39 @@
     "id": "smp-island",
     "nombre": "SMP ISLAND • Temporada Oficial",
     "tag": "SURVIVAL PRIVADO",
+    "imagen": "https://app.zyrisland.net/assets/instances/smp-island.jpg",
+    "url_descarga": "https://app.zyrisland.net/instance.html?id=smp-island",
     "version": "Java 1.21.1 • Fabric",
     "estado": "online",
     "ip": "play.zyrisland.net",
     "ram_recomendada": "4 GB RAM",
     "mods_count": 38,
-    "descripcion": "Experiencia semi-vanilla optimizada con economía comunitaria, protecciones por honestidad y eventos dinámicos.",
-    "archivo_zip": "ZyrIsland-SMP-Pack-v2.4.zip",
-    "url_descarga": "https://zyrisland.net/betatest/"
+    "descripcion": "Experiencia semi-vanilla optimizada con economía comunitaria, protecciones por honestidad y eventos dinámicos."
   },
   {
     "id": "eufonia-events",
     "nombre": "EUFONIA CLIENT • Eventos ZyrAkaTV™",
     "tag": "MINIJUEGOS & SHOWS",
+    "imagen": "https://app.zyrisland.net/assets/instances/eufonia-events.jpg",
+    "url_descarga": "https://app.zyrisland.net/instance.html?id=eufonia-events",
     "version": "Java 1.21.1 • Custom HUD",
     "estado": "online",
     "ip": "events.zyrisland.net",
     "ram_recomendada": "6 GB RAM",
     "mods_count": 52,
-    "descripcion": "Paquete oficial con texturas Unicode custom, audio posicional y mecánicas exclusivas para grabaciones y directos.",
-    "archivo_zip": "Eufonia-Events-Build-v4.1.zip",
-    "url_descarga": "https://zyrisland.net/betatest/"
+    "descripcion": "Paquete oficial con texturas Unicode custom, audio posicional y mecánicas exclusivas para grabaciones y directos."
   },
   {
     "id": "betatest-v04",
     "nombre": "ZYRISLAND LABS • BetaTest Arena",
     "tag": "PRUEBAS PÚBLICAS",
+    "imagen": "https://app.zyrisland.net/assets/instances/betatest-v04.jpg",
+    "url_descarga": "https://app.zyrisland.net/instance.html?id=betatest-v04",
     "version": "Java 1.21.1 • Vanilla / Sodium",
     "estado": "maintenance",
     "ip": "beta.zyrisland.net",
     "ram_recomendada": "4 GB RAM",
     "mods_count": 14,
-    "descripcion": "Entorno experimental para testear nuevas arenas competitivas y estabilidad de TPS antes de su lanzamiento.",
-    "archivo_zip": "ZyrIsland-BetaTest-v0.4.zip",
-    "url_descarga": "https://zyrisland.net/betatest/"
+    "descripcion": "Entorno experimental para testear nuevas arenas competitivas y estabilidad de TPS antes de su lanzamiento."
   }
 ]
