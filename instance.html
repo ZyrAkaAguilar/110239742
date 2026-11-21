@@ -3,29 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instances</title>
+    <title>Instancia | ZyrAkaTV™ App</title>
+    <meta name="theme-color" content="#cc1224">
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+    <link rel="shortcut icon" href="favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="ZyrAkaTV" />
-    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <link rel="manifest" href="favicon/site.webmanifest" />
 </head>
 <body class="instance-body">
-    
+
+    <!-- Bloqueo Exclusivo para Teléfonos Móviles -->
+    <div id="mobile-blocker" class="mobile-blocker-screen">
+        <div class="mobile-blocker-card">
+            <div class="mobile-blocker-icon">
+                <span class="material-icons">desktop_windows</span>
+            </div>
+            <div class="mobile-blocker-pill">SOLO COMPUTADORA • PC / MAC</div>
+            <h1>Acceso No Disponible en Móviles</h1>
+            <p>
+                El gestor de instancias y eventos de <strong>ZyrAkaTV™</strong> está diseñado exclusivamente para ordenadores con <strong>Minecraft Java Edition</strong>.
+            </p>
+            <a href="https://zyrisland.net" class="btn-back-main-site">
+                <span class="material-icons">arrow_back</span> Ir a ZyrIsland.net
+            </a>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
     <div id="bg-layer" class="bg-layer"></div>
+    <div class="bg-vignette"></div>
 
     <div class="instance-layout">
         <nav class="side-dock">
             <div class="dock-top">
-                <span id="back-to-dash" class="material-icons menu-btn" title="Volver al menú">menu</span>
+                <span id="back-to-dash" class="material-icons menu-btn" title="Volver al Dashboard">arrow_back</span>
             </div>
 
-            <div id="dock-icons" class="dock-icons">
-            </div>
+            <div id="dock-icons" class="dock-icons"></div>
 
             <div class="dock-bottom">
                 <img id="user-avatar-dock" class="dock-avatar" src="" alt="Skin">
@@ -33,34 +53,69 @@
         </nav>
 
         <main class="main-stage">
+            <!-- Cabecera Superior de Estado -->
+            <div class="instance-top-bar">
+                <div class="instance-brand-chip">
+                    <img src="assets/icons/zyrakatv-ico.png" alt="ZyrAkaTV">
+                    <span>ZYRAKATV™ LAUNCHER</span>
+                </div>
+                <div id="instance-status-pill" class="instance-live-pill">
+                    <span class="live-dot"></span>
+                    <span id="instance-status-text">INSTANCIA VERIFICADA</span>
+                </div>
+            </div>
+
+            <!-- Información Hero de la Instancia -->
+            <div class="instance-hero-info" id="instance-hero-info">
+                <span class="instance-hero-tag" id="inst-tag">EVENTO OFICIAL</span>
+                <h1 id="inst-hero-title">Cargando Instancia...</h1>
+                <p id="inst-hero-desc">Preparando recursos y verificando permisos de acceso.</p>
+
+                <div class="instance-specs-bar">
+                    <span class="spec-badge"><span class="material-icons">memory</span> <strong id="inst-version">Java 1.21.1</strong></span>
+                    <span class="spec-badge"><span class="material-icons">extension</span> <strong id="inst-mods">0 Mods</strong></span>
+                    <button type="button" id="copy-inst-ip-btn" class="spec-badge ip-copy-chip" title="Copiar dirección IP">
+                        <span class="material-icons">dns</span>
+                        <strong id="inst-ip">play.zyrisland.net</strong>
+                        <span class="material-icons" style="font-size: 0.95rem; opacity: 0.8;">content_copy</span>
+                    </button>
+                </div>
+            </div>
+
             <div class="bottom-area">
-                
                 <div id="play-container" class="play-btn-container">
-                    <button id="play-btn" class="btn-play">DESCARGAR</button>
+                    <button id="play-btn" class="btn-play">
+                        <span class="material-icons">download</span> DESCARGAR
+                    </button>
                 </div>
 
                 <div id="progress-ui" class="download-panel hidden">
                     <div class="dp-left">
-                        <h2 id="dp-title">Cargando...</h2>
-                        
+                        <div class="dp-header-row">
+                            <h2 id="dp-title">Cargando...</h2>
+                            <span id="dp-step-counter" class="dp-step-badge">1 / 7</span>
+                        </div>
+
                         <div class="dp-bar-container">
                             <div id="dp-bar-1" class="dp-bar-fill"></div>
                         </div>
-                        
+
                         <div id="status-text" class="dp-status-text">Iniciando...</div>
-                        
-                        <div class="dp-bar-container">
+
+                        <div class="dp-bar-container secondary">
                             <div id="dp-bar-2" class="dp-bar-fill"></div>
                         </div>
-                        
-                        <div id="dp-timer" class="dp-timer">00:00</div>
+
+                        <div class="dp-footer-meta">
+                            <div id="dp-timer" class="dp-timer">00:00</div>
+                            <span class="dp-secure-note"><span class="material-icons">verified</span> SHA-256 Verified</span>
+                        </div>
                     </div>
-                    
+
                     <div class="dp-right">
                         <img id="dp-image" src="" alt="Cover de la instancia">
                     </div>
                 </div>
-
             </div>
         </main>
     </div>

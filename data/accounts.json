@@ -2,13 +2,53 @@
   {
     "username": "ZyrAkaAguilar",
     "password": "cyn201030",
+    "role": "admin",
+    "badge": "Fundadora • ZyrAkaTV™",
+    "discord": "zyrakatv",
     "banned": false,
-    "instances": ["zyrisland"]
+    "maxWarns": 3,
+    "banInfo": {
+      "type": null,
+      "caseId": null,
+      "reason": "",
+      "staff": "",
+      "date": "",
+      "expiresAt": null,
+      "appealable": false
+    },
+    "warns": [],
+    "instances": [
+      "zyrisland",
+      "null"
+    ]
   },
   {
     "username": "Usuario",
     "password": "123",
+    "role": "player",
+    "badge": "Cuenta Suspendida",
+    "discord": "usuario#0001",
     "banned": true,
+    "maxWarns": 3,
+    "banInfo": {
+      "type": "tempban",
+      "caseId": "BAN-2026-042",
+      "reason": "Incumplimiento de normativa interna durante evento privado (Art. 5.2.3) y acumulación de advertencias.",
+      "staff": "ZyrAkaAguilar",
+      "date": "2026-11-20 18:30",
+      "expiresAt": "2026-11-27T23:59:59Z",
+      "appealable": true
+    },
+    "warns": [
+      {
+        "id": "WRN-2026-011",
+        "reason": "Alteración de zona protegida sin autorización del equipo Staff.",
+        "severity": "grave",
+        "date": "2026-11-20 18:25",
+        "staff": "ZyrAkaAguilar",
+        "active": true
+      }
+    ],
     "instances": []
   }
 ]

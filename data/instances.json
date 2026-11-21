@@ -1,15 +1,29 @@
 {
   "zyrisland": {
     "name": "ZyrIsland",
-    "background": "https://app.zyrisland.net/assets/backgrounds/zyrisland_background.png",
-    "icon": "https://app.zyrisland.net/assets/icons/zyrisland_icon.jpg",
+    "tag": "EVENTO PRINCIPAL",
+    "version": "Java 1.21.1 • Fabric",
+    "status": "online",
+    "ip": "play.zyrisland.net",
+    "ram": "4 GB RAM",
+    "modsCount": 42,
+    "description": "Instancia oficial de ZyrIsland con texturas Unicode personalizadas, HUD dinámico y mecánicas exclusivas de ZyrAkaTV™.",
+    "background": "assets/backgrounds/zyrisland_background.png",
+    "icon": "assets/icons/zyrisland_icon.jpg",
     "downloadLink": "instance.html?id=zyrisland",
-    "fileUrl": "https://tu-servidor.com/archivos/backrooms_assets.zip"
+    "fileUrl": "https://tu-servidor.com/archivos/zyrisland_assets.zip"
   },
   "null": {
     "name": "Test Instance",
-    "background": "https://app.zyrisland.net/assets/backgrounds/null_background.jpg",
-    "icon": "https://app.zyrisland.net/assets/icons/null_icon.jpg",
+    "tag": "ENTORNO DE PRUEBAS",
+    "version": "Java 1.21.1 • Dev Build",
+    "status": "maintenance",
+    "ip": "beta.zyrisland.net",
+    "ram": "4 GB RAM",
+    "modsCount": 18,
+    "description": "Instancia experimental para validación de mapas, recursos técnicos y pruebas de rendimiento previo a directos.",
+    "background": "assets/backgrounds/null_background.jpg",
+    "icon": "assets/icons/null_icon.jpg",
     "downloadLink": "instance.html?id=null",
     "fileUrl": "https://tu-servidor.com/archivos/backrooms_assets.zip"
   }

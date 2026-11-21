@@ -3,60 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Dashboard | ZyrAkaTV™ App</title>
+    <meta name="theme-color" content="#cc1224">
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+    <link rel="shortcut icon" href="favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="ZyrAkaTV" />
-    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <link rel="manifest" href="favicon/site.webmanifest" />
 </head>
 <body class="dashboard-body">
-    <div id="toast-container" class="toast-container"></div>
+    <div class="ambient-canvas"></div>
+    <div class="ambient-grid"></div>
 
-    <div id="unauthorized-view" class="unauthorized-container">
-        <div class="background-graphic"></div>
-        <div class="login-container">
-            <h1>NO <span class="highlight">AUTORIZADO</span></h1>
-            <h2 class="small-subtitle">No tienes autorizado a entrar a los eventos. Si estás esperando entrar a un evento, habla con el organizador del evento o contacta por el discord del evento.</h2>
-            <button id="unauth-logout-btn" class="red-btn btn-small">
-                <span class="material-icons icon">logout</span> Cerrar Sesión
-            </button>
+    <!-- Bloqueo Exclusivo para Teléfonos Móviles -->
+    <div id="mobile-blocker" class="mobile-blocker-screen">
+        <div class="mobile-blocker-card">
+            <div class="mobile-blocker-icon">
+                <span class="material-icons">desktop_windows</span>
+            </div>
+            <div class="mobile-blocker-pill">SOLO COMPUTADORA • PC / MAC</div>
+            <h1>Acceso No Disponible en Móviles</h1>
+            <p>
+                El gestor de instancias y eventos de <strong>ZyrAkaTV™</strong> está diseñado exclusivamente para ordenadores con <strong>Minecraft Java Edition</strong>.
+            </p>
+            <a href="https://zyrisland.net" class="btn-back-main-site">
+                <span class="material-icons">arrow_back</span> Ir a ZyrIsland.net
+            </a>
         </div>
     </div>
 
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Vista 1: Bloqueo por Baneo (Temp-Ban / Perm-Ban) -->
+    <div id="banned-view" class="restriction-overlay hidden">
+        <div class="background-graphic"></div>
+        <div class="restriction-card ban-theme">
+            <div class="restriction-icon-ring ban">
+                <span class="material-icons" id="ban-shield-icon">gavel</span>
+            </div>
+            <div class="restriction-pill ban" id="ban-type-label">CUENTA SUSPENDIDA</div>
+            <h1>ACCESO <span class="highlight">RESTRINGIDO</span></h1>
+            <p class="restriction-lead">
+                La cuenta <strong id="ban-username-display" style="color: #fff;">Usuario</strong> tiene una sanción disciplinaria vigente en <strong>ZyrIsland</strong>.
+            </p>
+
+            <div class="ban-details-panel">
+                <div class="ban-reason-block">
+                    <span class="detail-caption">Motivo registrado</span>
+                    <p id="ban-reason-text">Incumplimiento de los Términos y Condiciones.</p>
+                </div>
+                <div class="ban-meta-trio">
+                    <div class="meta-box">
+                        <small>ID de Caso</small>
+                        <strong id="ban-case-id">BAN-2026-000</strong>
+                    </div>
+                    <div class="meta-box">
+                        <small>Staff Responsable</small>
+                        <strong id="ban-staff-name">ZyrAkaAguilar</strong>
+                    </div>
+                    <div class="meta-box">
+                        <small>Fecha</small>
+                        <strong id="ban-date-text">Reciente</strong>
+                    </div>
+                </div>
+                <div class="ban-countdown-strip" id="ban-countdown-box">
+                    <small>Tiempo restante para levantamiento</small>
+                    <div id="ban-countdown-timer" class="countdown-digits">00d 00h 00m 00s</div>
+                </div>
+            </div>
+
+            <div class="restriction-actions">
+                <a id="ban-appeal-btn" href="https://discord.gg/DVBdqXgsGu" target="_blank" rel="noopener" class="discord-action-btn">
+                    <span class="material-icons">support_agent</span> Apelar en Discord
+                </a>
+                <button id="ban-logout-btn" class="red-btn">
+                    <span class="material-icons icon">logout</span> Cerrar Sesión
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vista 2: No Autorizado (Sin Whitelist / Sin Instancias) -->
+    <div id="unauthorized-view" class="restriction-overlay hidden">
+        <div class="background-graphic"></div>
+        <div class="restriction-card warn-theme">
+            <div class="restriction-icon-ring warn">
+                <span class="material-icons">lock_person</span>
+            </div>
+            <div class="restriction-pill warn">PENDIENTE DE AUTORIZACIÓN</div>
+            <h1>NO <span class="highlight">AUTORIZADO</span></h1>
+            <p class="restriction-lead">
+                No tienes permisos activos para entrar a los eventos. Si estás esperando participar en un evento, habla con el organizador o contáctanos por el Discord oficial.
+            </p>
+            <div class="restriction-actions">
+                <a href="https://discord.gg/DVBdqXgsGu" target="_blank" rel="noopener" class="discord-action-btn">
+                    <span class="material-icons">forum</span> Discord Oficial
+                </a>
+                <button id="unauth-logout-btn" class="red-btn">
+                    <span class="material-icons icon">logout</span> Cerrar Sesión
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vista 3: Dashboard Principal -->
     <div id="dashboard-view" class="dashboard-layout hidden">
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
             <div class="sidebar-top">
-                <span class="material-icons toggle-arrow">arrow_back_ios_new</span>
+                <button type="button" id="toggle-sidebar-btn" class="toggle-arrow-btn" title="Colapsar/Expandir menú">
+                    <span class="material-icons toggle-arrow">arrow_back_ios_new</span>
+                </button>
+
                 <div class="user-profile">
                     <div class="avatar-container">
                         <img id="user-avatar" src="" alt="Skin de Minecraft">
+                        <span class="online-status-dot" title="Conectado"></span>
                     </div>
                     <h2 id="user-name">Cargando...</h2>
+                    <span id="user-role-badge" class="user-role-tag">MIEMBRO</span>
                 </div>
+
                 <nav class="sidebar-menu">
-                    <a href="https://discord.gg/FarnmZxHGb" id="help-btn" class="menu-item">
-                        <span class="material-icons">help_outline</span> Soporte
+                    <button type="button" class="menu-item active" data-nav="instances">
+                        <span class="material-icons">dns</span>
+                        <span class="menu-label">Instancias</span>
+                    </button>
+                    <button type="button" class="menu-item" data-nav="warns">
+                        <span class="material-icons">warning_amber</span>
+                        <span class="menu-label">Warns & Estado</span>
+                        <span id="sidebar-warn-pill" class="nav-count-pill">0/3</span>
+                    </button>
+                    <button type="button" id="nav-staff-btn" class="menu-item hidden" data-nav="staff">
+                        <span class="material-icons">admin_panel_settings</span>
+                        <span class="menu-label">Administración</span>
+                    </button>
+                    <a href="https://discord.gg/DVBdqXgsGu" target="_blank" rel="noopener" id="help-btn" class="menu-item">
+                        <span class="material-icons">help_outline</span>
+                        <span class="menu-label">Soporte</span>
                     </a>
-                    <a href="#" id="logout-btn" class="menu-item">
-                        <span class="material-icons">logout</span> Cerrar Sesion
+                    <a href="#" id="logout-btn" class="menu-item logout-link">
+                        <span class="material-icons">logout</span>
+                        <span class="menu-label">Cerrar Sesión</span>
                     </a>
                 </nav>
             </div>
+
             <div class="sidebar-bottom">
                 <div class="studio-logo">
-                    <img src="https://app.zyrisland.net/assets/icons/zyrclient-ico.png" alt="Studio Logo" class="custom-logo">
+                    <img src="assets/icons/zyrclient-ico.png" alt="Studio Logo" class="custom-logo">
                     <div class="studio-text">
-                        <span class="brand-name">ZYRAKATV<sup style="font-size:0.5rem">™</sup></span><br>
+                        <span class="brand-name">ZYRAKATV<sup style="font-size:0.55rem">™</sup></span><br>
                         <span class="brand-sub">APP</span>
                     </div>
                 </div>
                 <div class="footer-links">
-                    <p><a href="https://zyrisland.net/soporte/terminos">Terms of Service</a> • <a href="zyrisland.net/soporte/reglas">Privacy Policy</a></p>
+                    <p><a href="https://zyrisland.net/soporte/terminos" target="_blank" rel="noopener">Terms of Service</a> • <a href="https://zyrisland.net/soporte/reglas" target="_blank" rel="noopener">Privacy Policy</a></p>
                 </div>
             </div>
         </aside>
@@ -64,17 +169,154 @@
         <main class="main-content">
             <div class="top-red-bar"></div>
             <header class="main-header">
+                <div class="header-left-status">
+                    <span class="live-sync-badge">
+                        <span class="live-dot"></span>
+                        <span>SYNC EN VIVO</span>
+                    </span>
+                </div>
                 <div class="header-right">
-                    <span class="instances-label">INSTANCES</span>
-                    <div class="search-box">
+                    <span class="instances-label" id="header-section-label">INSTANCES</span>
+                    <div class="search-box" id="search-box-wrapper">
                         <span class="material-icons">search</span>
-                        <input type="text" placeholder="Search">
+                        <input type="text" id="instance-search-input" placeholder="Buscar instancia...">
                     </div>
                 </div>
             </header>
+
             <section class="content-area">
-                <h1 class="page-title"><span class="text-thin">INSTANCIAS</span> <span class="text-bold">DISPONIBLES</span></h1>
-                <div id="instances-grid" class="instances-grid">
+                <!-- Sección A: Instancias Disponibles -->
+                <div id="tab-instances" class="dashboard-tab-panel">
+                    <div class="hero-welcome-strip">
+                        <div class="hero-welcome-info">
+                            <h1 class="page-title"><span class="text-thin">INSTANCIAS</span> <span class="text-bold">DISPONIBLES</span></h1>
+                            <p class="page-subtitle">Selecciona una tarjeta para abrir su consola de descarga e instalación.</p>
+                        </div>
+
+                        <div class="strike-meter-card" id="open-warns-shortcut" title="Ver historial de advertencias">
+                            <div class="strike-meter-top">
+                                <span>ESTADO DISCIPLINARIO</span>
+                                <strong id="strike-counter-text">0 / 3 WARNS</strong>
+                            </div>
+                            <div class="strike-bars-row">
+                                <div class="strike-seg" id="strike-seg-1"></div>
+                                <div class="strike-seg" id="strike-seg-2"></div>
+                                <div class="strike-seg" id="strike-seg-3"></div>
+                            </div>
+                            <small id="strike-status-desc">Historial limpio • Sin sanciones</small>
+                        </div>
+                    </div>
+
+                    <div id="instances-grid" class="instances-grid"></div>
+                </div>
+
+                <!-- Sección B: Historial de Advertencias (Warns) -->
+                <div id="tab-warns" class="dashboard-tab-panel hidden">
+                    <div class="section-top-bar">
+                        <div>
+                            <h1 class="page-title"><span class="text-thin">HISTORIAL DE</span> <span class="text-bold">WARNS</span></h1>
+                            <p class="page-subtitle">Registro disciplinario vinculado a tu cuenta de Minecraft en ZyrIsland.</p>
+                        </div>
+                        <a href="https://zyrisland.net/soporte/terminos" target="_blank" rel="noopener" class="outline-pill-btn">
+                            <span class="material-icons">gavel</span> Ver Reglamento Oficial
+                        </a>
+                    </div>
+                    <div id="warns-list-container" class="warns-list-container"></div>
+                </div>
+
+                <!-- Sección C: Panel de Administración Staff -->
+                <div id="tab-staff" class="dashboard-tab-panel hidden">
+                    <div class="section-top-bar">
+                        <div>
+                            <h1 class="page-title"><span class="text-thin">PANEL DE</span> <span class="text-bold">ADMINISTRACIÓN</span></h1>
+                            <p class="page-subtitle">Gestiona warns, baneos temporales/permanentes, permisos de instancias y cuentas nuevas.</p>
+                        </div>
+                        <button type="button" id="reset-sandbox-btn" class="outline-pill-btn">
+                            <span class="material-icons">restart_alt</span> Restaurar JSON Base
+                        </button>
+                    </div>
+
+                    <div class="admin-grid">
+                        <!-- Columna 1: Sanciones y Permisos de Usuario Existente -->
+                        <div class="admin-card">
+                            <h3><span class="material-icons">shield</span> Moderación & Permisos de Usuario</h3>
+
+                            <div class="admin-form-stack">
+                                <div class="admin-field">
+                                    <label for="admin-user-select">Seleccionar Jugador</label>
+                                    <select id="admin-user-select" class="admin-control"></select>
+                                </div>
+
+                                <div class="admin-field">
+                                    <label>Instancias Autorizadas para este Jugador</label>
+                                    <div id="admin-instances-checkboxes" class="instances-toggle-group"></div>
+                                </div>
+
+                                <div class="admin-row-2">
+                                    <div class="admin-field">
+                                        <label for="admin-warn-severity">Severidad de Warn</label>
+                                        <select id="admin-warn-severity" class="admin-control">
+                                            <option value="leve">Leve (Aviso)</option>
+                                            <option value="media" selected>Media (Infracción)</option>
+                                            <option value="grave">Grave (Crítica)</option>
+                                        </select>
+                                    </div>
+                                    <div class="admin-field">
+                                        <label for="admin-tempban-hours">Duración Temp-Ban (Horas)</label>
+                                        <input type="number" id="admin-tempban-hours" class="admin-control" value="48" min="1" max="8760">
+                                    </div>
+                                </div>
+
+                                <div class="admin-field">
+                                    <label for="admin-reason-input">Motivo de la Sanción</label>
+                                    <textarea id="admin-reason-input" class="admin-control" rows="2" placeholder="Describe el motivo o artículo del reglamento..."></textarea>
+                                </div>
+
+                                <div class="admin-actions-grid">
+                                    <button type="button" id="btn-admin-warn" class="admin-btn btn-warn">
+                                        <span class="material-icons">warning</span> Aplicar Warn
+                                    </button>
+                                    <button type="button" id="btn-admin-tempban" class="admin-btn btn-tempban">
+                                        <span class="material-icons">schedule</span> Temp-Ban
+                                    </button>
+                                    <button type="button" id="btn-admin-permban" class="admin-btn btn-permban">
+                                        <span class="material-icons">block</span> Perm-Ban
+                                    </button>
+                                    <button type="button" id="btn-admin-pardon" class="admin-btn btn-pardon">
+                                        <span class="material-icons">verified_user</span> Perdonar / Limpiar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <hr class="admin-divider">
+
+                            <h3><span class="material-icons">person_add</span> Registrar Nueva Cuenta</h3>
+                            <div class="admin-row-2">
+                                <input type="text" id="new-acc-user" class="admin-control" placeholder="Usuario IGN">
+                                <input type="text" id="new-acc-pass" class="admin-control" placeholder="Contraseña">
+                            </div>
+                            <button type="button" id="btn-admin-create-user" class="red-btn" style="width: 100%; margin-top: 12px; padding: 11px; font-size: 0.9rem;">
+                                <span class="material-icons icon">add_circle</span> Añadir Cuenta al JSON
+                            </button>
+                        </div>
+
+                        <!-- Columna 2: Vista previa en vivo y Exportación de accounts.json -->
+                        <div class="admin-card">
+                            <h3><span class="material-icons">code</span> Exportar data/accounts.json</h3>
+                            <p class="admin-hint">
+                                Los cambios se prueban al instante en tu navegador. Copia o descarga este archivo y reemplaza <code>data/accounts.json</code> en tu repositorio para aplicarlo a todos los usuarios.
+                            </p>
+                            <pre id="admin-json-preview" class="json-code-box"></pre>
+                            <div class="admin-row-2">
+                                <button type="button" id="btn-copy-accounts-json" class="red-btn" style="width: 100%; padding: 12px; font-size: 0.88rem;">
+                                    <span class="material-icons icon">content_copy</span> Copiar JSON
+                                </button>
+                                <button type="button" id="btn-download-accounts-json" class="outline-pill-btn" style="width: 100%; justify-content: center;">
+                                    <span class="material-icons">download</span> Descargar .json
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
