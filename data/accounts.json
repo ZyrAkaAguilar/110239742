@@ -30,7 +30,7 @@
     "banned": true,
     "maxWarns": 3,
     "banInfo": {
-      "type": "ban",
+      "type": "permban",
       "caseId": "BAN-2026-000",
       "reason": "Razon sin especificar...",
       "staff": "ZyrAkaAguilar",
