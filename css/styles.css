@@ -36,9 +36,6 @@ body {
     display: none !important;
 }
 
-/* =========================================
-   FONDO AMBIENTAL ANIMADO
-   ========================================= */
 .ambient-canvas {
     position: fixed;
     inset: 0;
@@ -88,9 +85,6 @@ body {
     50% { transform: translate(-50%, -50%) scale(1.04); }
 }
 
-/* =========================================
-   BLOQUEO ESTRICTO PARA TELÉFONOS MÓVILES
-   ========================================= */
 .mobile-blocker-screen {
     display: none;
     position: fixed;
@@ -200,9 +194,6 @@ body {
     }
 }
 
-/* =========================================
-   TOAST NOTIFICATIONS ANIMADAS
-   ========================================= */
 .toast-container {
     position: fixed;
     top: 22px;
@@ -287,9 +278,6 @@ body {
     to { width: 0%; }
 }
 
-/* =========================================
-   PANTALLA DE LOGIN (index.html)
-   ========================================= */
 .login-page-body {
     display: flex;
     justify-content: center;
@@ -571,9 +559,6 @@ body {
     font-size: 0.95rem;
 }
 
-/* =========================================
-   PANTALLAS DE RESTRICCIÓN (BAN & NO AUTORIZADO)
-   ========================================= */
 .restriction-overlay {
     position: fixed;
     inset: 0;
@@ -782,9 +767,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* =========================================
-   DASHBOARD PRINCIPAL (dashboard.html)
-   ========================================= */
 .dashboard-body {
     background-color: #09090c;
     overflow: hidden;
@@ -1003,7 +985,7 @@ body {
 }
 
 .brand-name { font-weight: 900; font-size: 1rem; }
-.brand-sub { font-weight: 600; font-size: 0.8rem; color: var(--accent-red); letter-spacing: 2px; }
+.brand-sub { font-weight: 600; font-size: 0.8rem; color: #fff; letter-spacing: 2px; }
 
 .footer-links p {
     font-size: 0.68rem;
