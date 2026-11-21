@@ -2,9 +2,9 @@
   {
     "username": "ZyrAkaAguilar",
     "password": "cyn201030",
-    "role": "admin",
+    "role": "player",
     "badge": "Fundadora • ZyrAkaTV™",
-    "discord": "zyrakatv",
+    "discord": "cynagl",
     "banned": false,
     "maxWarns": 3,
     "banInfo": {
@@ -18,8 +18,7 @@
     },
     "warns": [],
     "instances": [
-      "zyrisland",
-      "null"
+      "zyrisland"
     ]
   },
   {
