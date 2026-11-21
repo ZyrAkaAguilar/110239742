@@ -67,13 +67,11 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => toast.remove(), 5300);
     }
 
-    // Colapsar / expandir sidebar
     const sidebar = document.getElementById('sidebar');
     document.getElementById('toggle-sidebar-btn').addEventListener('click', () => {
         sidebar.classList.toggle('collapsed');
     });
 
-    // Navegación por pestañas laterales
     function switchSection(section) {
         activeSection = section;
         document.querySelectorAll('.menu-item[data-nav]').forEach(btn => {
@@ -103,7 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('open-warns-shortcut').addEventListener('click', () => switchSection('warns'));
 
-    // Buscador en vivo de instancias
     searchInput.addEventListener('input', () => {
         if (currentAccountCache) {
             renderInstances(currentAccountCache.instances || [], instancesDBCache, searchInput.value.trim().toLowerCase());
@@ -125,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
             let accounts = await accountsRes.json();
             const instancesDB = await instancesRes.json();
 
-            // Verificar si hay modificaciones del Panel Staff guardadas localmente
             try {
                 const sandbox = JSON.parse(localStorage.getItem(SANDBOX_KEY) || 'null');
                 if (Array.isArray(sandbox) && sandbox.length > 0) {
@@ -144,13 +140,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             currentAccountCache = account;
 
-            // 1. Verificar baneo activo
             if (account.banned === true) {
                 showBanned(account);
                 return;
             }
 
-            // 2. Verificar autorización / instancias asignadas
             if (!account.instances || account.instances.length === 0) {
                 showUnauthorized();
                 return;
@@ -204,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tick();
             banCountdownInterval = setInterval(tick, 1000);
         } else {
-            countdownEl.textContent = 'PERMANENTE E IRREVOCABLE';
+            countdownEl.textContent = 'PERMANENTE';
             countdownEl.style.fontSize = '1.1rem';
         }
     }
@@ -245,9 +239,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const descMap = [
             'Historial limpio • Sin advertencias',
-            'Precaución • 1 advertencia registrada',
+            'Precaucion • 1 advertencia registrada',
             'Riesgo alto • A 1 warn de suspensión',
-            'Límite alcanzado • Revisión disciplinaria'
+            'Limite alcanzado • Revision disciplinaria'
         ];
         document.getElementById('strike-status-desc').textContent = descMap[lvl];
 
@@ -336,9 +330,6 @@ document.addEventListener('DOMContentLoaded', () => {
         `).join('');
     }
 
-    /* =========================================================
-       PANEL DE ADMINISTRACIÓN STAFF
-       ========================================================= */
     function renderAdminPanel() {
         const userSelect = document.getElementById('admin-user-select');
         const prevSelected = userSelect.value;
