@@ -17,7 +17,9 @@
       "appealable": false
     },
     "warns": [],
-    "instances": []
+    "instances": [
+      "zyrisland"
+    ]
   },
   {
     "username": "UsuarioTest",
