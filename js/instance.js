@@ -100,7 +100,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.title = `${currentInstance.name} | ZyrAkaTV™ App`;
         document.getElementById('bg-layer').style.backgroundImage = `url('${currentInstance.background}')`;
 
-        // Poblar información hero
         document.getElementById('inst-tag').textContent = currentInstance.tag || 'INSTANCIA OFICIAL';
         document.getElementById('inst-hero-title').textContent = currentInstance.name;
         document.getElementById('inst-hero-desc').textContent = currentInstance.description || 'Paquete oficial configurado para ZyrIsland.';
@@ -119,7 +118,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('dp-title').textContent = currentInstance.name;
         document.getElementById('dp-image').src = currentInstance.icon;
 
-        // Dock lateral de instancias permitidas
         const dockContainer = document.getElementById('dock-icons');
         account.instances.forEach(id => {
             const instData = instancesDB[id];
@@ -140,7 +138,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         });
 
-        // Verificación periódica de seguridad mientras está en la página
         setInterval(async () => {
             try {
                 const freshAccounts = await loadAccountsWithSandbox(Date.now());
@@ -151,7 +148,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             } catch (_) {}
         }, 3000);
 
-        // Sistema de descarga multi-etapa con simulación natural
         const playBtn = document.getElementById('play-btn');
         const playContainer = document.getElementById('play-container');
         const progressUI = document.getElementById('progress-ui');
@@ -236,7 +232,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 } else {
                     clearInterval(timerInterval);
                     bar1.style.width = '100%';
-                    statusText.textContent = '¡Descarga completada con éxito!';
+                    statusText.textContent = '¡Descarga completada con exito!';
                     showToast('success', 'PAQUETE LISTO', `Iniciando descarga de ${currentInstance.name}...`);
 
                     setTimeout(() => {
