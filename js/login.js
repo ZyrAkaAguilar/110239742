@@ -110,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 let accounts = await response.json();
 
-                // Aplicar cambios locales del sandbox staff si existen
                 try {
                     const sandbox = JSON.parse(localStorage.getItem('zyrisland_accounts_sandbox') || 'null');
                     if (Array.isArray(sandbox) && sandbox.length > 0) {
