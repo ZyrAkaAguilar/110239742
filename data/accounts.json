@@ -30,13 +30,13 @@
     "banned": true,
     "maxWarns": 3,
     "banInfo": {
-      "type": "tempban",
-      "caseId": "BAN-2026-042",
-      "reason": "Incumplimiento de normativa interna durante evento privado (Art. 5.2.3) y acumulación de advertencias.",
+      "type": "ban",
+      "caseId": "BAN-2026-000",
+      "reason": "Razon sin especificar...",
       "staff": "ZyrAkaAguilar",
-      "date": "2026-11-20 18:30",
-      "expiresAt": "2026-11-20T19:50:00Z",
-      "appealable": true
+      "date": "20--/--/-- --:--",
+      "expiresAt": "2026-11-27T23:59:59Z",
+      "appealable": false
     },
     "warns": [
       {
