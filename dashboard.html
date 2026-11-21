@@ -19,7 +19,6 @@
     <div class="ambient-canvas"></div>
     <div class="ambient-grid"></div>
 
-    <!-- Bloqueo Exclusivo para Teléfonos Móviles -->
     <div id="mobile-blocker" class="mobile-blocker-screen">
         <div class="mobile-blocker-card">
             <div class="mobile-blocker-icon">
@@ -38,7 +37,6 @@
 
     <div id="toast-container" class="toast-container"></div>
 
-    <!-- Vista 1: Bloqueo por Baneo (Temp-Ban / Perm-Ban) -->
     <div id="banned-view" class="restriction-overlay hidden">
         <div class="background-graphic"></div>
         <div class="restriction-card ban-theme">
@@ -63,7 +61,7 @@
                     </div>
                     <div class="meta-box">
                         <small>Staff Responsable</small>
-                        <strong id="ban-staff-name">ZyrAkaAguilar</strong>
+                        <strong id="ban-staff-name">Unknown</strong>
                     </div>
                     <div class="meta-box">
                         <small>Fecha</small>
@@ -87,7 +85,6 @@
         </div>
     </div>
 
-    <!-- Vista 2: No Autorizado (Sin Whitelist / Sin Instancias) -->
     <div id="unauthorized-view" class="restriction-overlay hidden">
         <div class="background-graphic"></div>
         <div class="restriction-card warn-theme">
@@ -110,7 +107,6 @@
         </div>
     </div>
 
-    <!-- Vista 3: Dashboard Principal -->
     <div id="dashboard-view" class="dashboard-layout hidden">
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-top">
@@ -172,7 +168,7 @@
                 <div class="header-left-status">
                     <span class="live-sync-badge">
                         <span class="live-dot"></span>
-                        <span>SYNC EN VIVO</span>
+                        <span>VERIFICADO</span>
                     </span>
                 </div>
                 <div class="header-right">
@@ -185,17 +181,16 @@
             </header>
 
             <section class="content-area">
-                <!-- Sección A: Instancias Disponibles -->
                 <div id="tab-instances" class="dashboard-tab-panel">
                     <div class="hero-welcome-strip">
                         <div class="hero-welcome-info">
                             <h1 class="page-title"><span class="text-thin">INSTANCIAS</span> <span class="text-bold">DISPONIBLES</span></h1>
-                            <p class="page-subtitle">Selecciona una tarjeta para abrir su consola de descarga e instalación.</p>
+                            <p class="page-subtitle">Selecciona una instancia para obtener sus assets.</p>
                         </div>
 
                         <div class="strike-meter-card" id="open-warns-shortcut" title="Ver historial de advertencias">
                             <div class="strike-meter-top">
-                                <span>ESTADO DISCIPLINARIO</span>
+                                <span>ESTADO DISCIPLINARIO </span>
                                 <strong id="strike-counter-text">0 / 3 WARNS</strong>
                             </div>
                             <div class="strike-bars-row">
@@ -210,7 +205,6 @@
                     <div id="instances-grid" class="instances-grid"></div>
                 </div>
 
-                <!-- Sección B: Historial de Advertencias (Warns) -->
                 <div id="tab-warns" class="dashboard-tab-panel hidden">
                     <div class="section-top-bar">
                         <div>
@@ -224,11 +218,10 @@
                     <div id="warns-list-container" class="warns-list-container"></div>
                 </div>
 
-                <!-- Sección C: Panel de Administración Staff -->
                 <div id="tab-staff" class="dashboard-tab-panel hidden">
                     <div class="section-top-bar">
                         <div>
-                            <h1 class="page-title"><span class="text-thin">PANEL DE</span> <span class="text-bold">ADMINISTRACIÓN</span></h1>
+                            <h1 class="page-title"><span class="text-thin">PANEL DE</span> <span class="text-bold">ADMINISTRACION</span></h1>
                             <p class="page-subtitle">Gestiona warns, baneos temporales/permanentes, permisos de instancias y cuentas nuevas.</p>
                         </div>
                         <button type="button" id="reset-sandbox-btn" class="outline-pill-btn">
@@ -237,7 +230,6 @@
                     </div>
 
                     <div class="admin-grid">
-                        <!-- Columna 1: Sanciones y Permisos de Usuario Existente -->
                         <div class="admin-card">
                             <h3><span class="material-icons">shield</span> Moderación & Permisos de Usuario</h3>
 
@@ -300,7 +292,6 @@
                             </button>
                         </div>
 
-                        <!-- Columna 2: Vista previa en vivo y Exportación de accounts.json -->
                         <div class="admin-card">
                             <h3><span class="material-icons">code</span> Exportar data/accounts.json</h3>
                             <p class="admin-hint">
