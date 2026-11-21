@@ -2,16 +2,16 @@
   "zyrisland": {
     "name": "ZyrIsland",
     "tag": "EVENTO PRINCIPAL",
-    "version": "Java 1.21.1 • Fabric",
-    "status": "online",
+    "version": "Java 1.21.11 | Vanilla",
+    "status": "offline",
     "ip": "play.zyrisland.net",
     "ram": "4 GB RAM",
-    "modsCount": 42,
-    "description": "Instancia oficial de ZyrIsland con texturas Unicode personalizadas, HUD dinámico y mecánicas exclusivas de ZyrAkaTV™.",
+    "modsCount": 0,
+    "description": "Instancia oficial de ZyrIsland. Este paquete contiene adiciones extra que mejoran la experiencia de ZyrIsland Minigames | ZyrAkaTV™.",
     "background": "assets/backgrounds/zyrisland_background.png",
     "icon": "assets/icons/zyrisland_icon.jpg",
     "downloadLink": "instance.html?id=zyrisland",
-    "fileUrl": "https://tu-servidor.com/archivos/zyrisland_assets.zip"
+    "fileUrl": "https://app.zyrisland.net/manifest/90906713-0_1.zip"
   },
   "null": {
     "name": "Test Instance",
