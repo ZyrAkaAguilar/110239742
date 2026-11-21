@@ -22,8 +22,8 @@
     ]
   },
   {
-    "username": "Usuario",
-    "password": "123",
+    "username": "UsuarioTest",
+    "password": "amanecer1234",
     "role": "player",
     "badge": "Cuenta Suspendida",
     "discord": "usuario#0001",
@@ -41,9 +41,9 @@
     "warns": [
       {
         "id": "WRN-2026-011",
-        "reason": "Alteración de zona protegida sin autorización del equipo Staff.",
+        "reason": "Test Warn",
         "severity": "grave",
-        "date": "2026-11-20 18:25",
+        "date": "20--/--/-- --:--",
         "staff": "ZyrAkaAguilar",
         "active": true
       }
